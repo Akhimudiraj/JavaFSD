@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="myclick">Click</button>
+    <button ondblclick="alert('Button is double clicked')">Double Click</button>
+    <form onsubmit="handleSubmit(event)">
+      <input id="myinput" type="text" onfocus="myfocus()" onblur="myblur()" />
+      <button type="submit">Submit</button>
+    </form>
+    <script>
+      function myfocus() {
+        document.getElementById("myinput").style.color = "red";
+      }
+      function myblur() {
+        document.getElementById("myinput").style.color = "green";
+      }
+      function pressedKey() {
+        alert("Key is release");
+      }
+      function handleSubmit(event) {
+        event.preventDefault();
+        alert("Form is submit");
+      }
+      document.getElementById("myclick").addEventListener("click", () => {
+        alert("You have a pressed...!");
+      });
+      document.getRootNode().addEventListener("click", () => {
+        alert("You have clicked on screen");
+      });
+    </script>
+  </body>
+</html>
+ 

@@ -1,0 +1,9 @@
+eclipse 
+
+File > new > project > Java Project
+Give project name  {Demo} > Next> finish
+
+right click on ur project i.e {demo} > class>
+give package name> give name > tick main method > finish
+
+//u will see a program with main method > right click and run as java program

@@ -1,0 +1,116 @@
+spring boot 
+lambok 
+
+https://medium.com/javarevisited/all-the-16-lombok-annotations-explained-in-a-4-minute-article-926f71934ec6
+
+https://www.geeksforgeeks.org/java/introduction-to-project-lombok-in-java-and-how-to-get-started/
+
+https://dev.to/gianfcop98/10-lombok-annotations-every-java-developer-should-know-pcd
+
+----------------------------------------------------------------------------
+JPA
+
+<> entity in gpt having annotations
+
+
+bycript password generator 
+https://www.browserling.com/tools/bcrypt
+
+//jtt
+------------------------------------------------------------------------------
+understanding springboot api
+https://medium.com/@dulanjayasandaruwan1998/understanding-spring-boot-architecture-flow-615d209b95f9
+
+https://medium.com/@udaypatil318/spring-boot-architecture-39935654ce5c
+
+security :
+https://www.geeksforgeeks.org/advance-java/spring-security-implementation-of-bcryptpasswordencoder/
+
+
+
+
+-----------------------------------------------------
+layers 5
+
+My controller >>>> presentation layer frontend interacts with backend it handles the request 
+
+service layer >> service btw controller and repo contains business logics like calculations, validations,rules
+
+persistence layer >>(repository layer) interact with database talks to db like saveall findall delete
+
+Database layer >> application.propertes  MySQL,oracle
+
+framework layer >>heat of application
+
+
+user send a req 
+controller calls repository (service)
+repository use db
+db saves/fetches data
+
+
+
+
+
+⚙️ Benefits of the Service Layer
+
+✅ Keeps code clean and modular
+✅ Separates business logic from controller logic
+✅ Makes testing easier (you can test service independently)
+✅ Allows reuse of logic (e.g., background jobs, schedulers, or other APIs)
+✅ Follows SOLID principles and layered architecture
+
+
+spring boot exception handling
+https://www.geeksforgeeks.org/springboot/exception-handling-in-spring-boot/
+
+-------------------------------------------------------------
+spring boot validation 
+https://www.geeksforgeeks.org/springboot/spring-boot-validation-using-hibernate-validator/
+
+
+spring security
+https://www.geeksforgeeks.org/advance-java/introduction-to-spring-security-and-its-features/
+
+Spring Security is a powerful and highly customizable authentication and access-control framework for Java applications, primarily used with Spring Boot. Its main goal is to secure applications by handling:
+
+Authentication – verifying who the user is.
+
+Authorization – deciding what the user is allowed to do.
+
+It’s widely used for web applications, REST APIs, and microservices.
+
+
+
+
+-------------------------------------------------------------------------------
+springboot actuator
+
+What is Spring Boot Actuator?
+
+Spring Boot Actuator is a feature that helps you monitor, manage, and check the health of your Spring Boot application.
+
+It gives you many useful ready-made endpoints like:
+
+✔ Health check
+
+✔ App info
+
+✔ Metrics (CPU, memory, requests)
+
+✔ Environment details
+
+✔ Beans
+
+✔ Logging
+
+✔ Thread info
+
+You don’t have to write code — Actuator gives it automatically.
+
+------------------------------------------------------------------------------------------------------------
+spring boot eureka server
+
+https://javatechonline.com/how-to-register-microservices-in-eureka-server/
+
+https://www.geeksforgeeks.org/advance-java/spring-boot-eureka-server/

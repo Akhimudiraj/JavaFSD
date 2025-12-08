@@ -1,0 +1,115 @@
+//sql
+create database Virtusa ;
+use Virtusa ;
+create table Employee
+(
+	id int,
+    Name varchar(10),
+    Age int ,
+    Salary int ,
+    Designation varchar(15)
+);
+select * from Employee ;
+
+
+//dynamic PreparedStatement mt = con.prepareStataemnt("insert into employee values(?,?,?,?)");
+use scanner
+print id,name,age take from scanner
+
+stmt.setInt(1,id);
+stmt.setString(2,name); >> like this
+
+stmt.execute();
+
+
+
+
+
+
+
+5 steps
+
+load the driver : load the driver  this will identify the which data base we are using it 
+
+*add dependencies in xml
+
+create the connections : where is ur database ? what is the username, password
+* Connection con= DriverManager
+
+create the statement
+execute the query
+close the conection 
+
+
+1. Maven project
+2.chose create a simple project
+3.group id packade name give and artifact id click on finish
+4.
+
+=====================================================================
+steps 
+
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+
+public class Dem {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		
+		try {
+		//	step1 : load the driver ... this will identify the which database u are using it
+			Class.forName("com.mysql.cj.jdbc.Driver");//this have inbuild logic to connect/ hit to database
+			System.out.println("driver loaded");
+
+			
+		//step2 : create the connection ? where is ur db? where us username? password
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost/Virtusa","root","200318");
+			System.out.println("connection created");
+			
+		//step3 : create the stmt  :this is just to pass what we can do on database /insert/update/delete
+			Statement stmt = con.createStatement();
+			
+		//step4 : execute the query
+			stmt.execute("insert into Employee values(111,'bahubali',27,1000000,'Developer')");
+			
+		//step 5 : close the connection
+			con.close();
+			stmt.close();
+			
+			System.out.println("data inserted successfully");
+			
+			
+		}catch (Exception e){
+			System.out.println(e);
+			
+		}
+
+	}
+
+}
+
+
+
+
+
+
+
+
+
+/=====================================================================
+//ResultSetMetaData it is an object which is used to store query data whenever we need to find only columns, count of column, names for that we use this 
+//			ResultSetMetaData rstmd=rs.getMetaData(); 
+//			
+//			System.out.println("1st Column name :"+rstmd.getColumnName(1));
+//			System.out.println("2nd Column name :"+rstmd.getColumnName(2));
+//			
+			
+//			while (rs.next()) {
+//				System.out.println(rs.getInt(1) + " :" +rs.getString(2)+": "+rs.getInt("Age")+" :"+rs.getInt(4)+" :"+rs.getString(5) );
+//			}
+//			con.close();
+//			stmt.close();

@@ -1,0 +1,202 @@
+ IOC  (why we use ?) what is the job of Ioc container 
+
+
+IOC is nothing but a inversion of control >>
+instead of writing code , spring container dos creating and managing objects . or  giving control of object creation to spring instead of using new 
+like 
+
+obj create done by springframework
+in ioc only we can see bean factory and application context
+
+getter setter 
+instead of that applicationcontext , beans 
+
+--------------------------------------------------------------------------
+
+ Bean Factory 
+			Application Context ( why this is prefer ? )
+
+Difference betwnn the bean Factory amd Application Context   
+
+bean is like creating a food in factory  basic > creating,managing,providng
+when requested beans were created 
+no event handling
+testing purpose or small application
+bean factory factory = new  xmlbean factory (only one)
+
+multi
+applicationcontext ontext  = new class pathapplcontext,filesystem,annotaionconfiguration
+enterprice level
+event handling in application context
+beans before only it creates in application sontext
+application context is like a factory     advanced>all things in beans,eager beans creation, event handling,
+
+------------------------------------------------------------------------
+Depedency Injuction ? 
+			Setter Injuction 
+			COnstructor Injuction
+
+Dependency Injection is a design pattern in which the IoC container (Spring) is responsible for providing the dependencies (objects) that a class needs, instead of the class creating them itself.
+
+
+in simple 
+
+Employee e = new Employee();
+Department d = new Department();
+e.setDepartment(d);
+
+In Spring, you don’t create the object manually.
+You tell Spring in the configuration what dependencies are needed —
+Spring then injects (supplies) them automatically.
+
+That’s called Dependency Injection.
+
+so in setter 
+it injected using setter methods 
+like setter program
+
+package spring;
+
+public class Employee {
+    private int id;
+    private String name;
+
+    public void setId(int id) { this.id = id; }
+    public void setName(String name) { this.name = name; }
+
+    public void display() {
+        System.out.println("ID: " + id + ", Name: " + name);
+    }
+}
+
+<bean id="empbean" class="spring.Employee">
+    <property name="id" value="101"/>
+    <property name="name" value="Robert Hook"/>
+</bean>
+
+
+here property name like that
+
+constutor injection is injexcted using constructors
+
+instead of setter
+package spring;
+
+public class Employee {
+    private int id;
+    private String name;
+
+    public Employee(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public void display() {
+        System.out.println("ID: " + id + ", Name: " + name);
+    }
+}
+
+<bean id="empbean" class="spring.Employee">
+    <constructor-arg name="id" value="102"/>
+    <constructor-arg name="name" value="Isaac Newton"/>
+</bean>
+ we ll write constructor args
+
+in setter we can set values later  but in  constructor only once 
+constructor dependencies are mandatory 
+in setter it is optional
+
+------------------------------------------------------------------
+
+ Steps to create a Simple Project
+
+create maven>create class to write gettersetter like prg(pojo file) > creta main file (here we use application context) > crete applicationcontext.xml (spring configuration file) and add dependencies >> in pom xml add dependencies version,artifact ,group id >> run in main class 
+
+_-------------------------------------------------------------------------
+
+   		what is POM file ? why we use  it ?
+project object model 
+it is heart of maven project to manage project like what project libraries it need ,how to build run>>> groupid, artifacts,versions
+o manage dependencies we use pom
+
+-------------------------------------------------------------------------------
+
+What is pojo class or bean class or Encupulated class ?
+
+pojo class consists kali getter setter ,construtors methods 
+
+it should have private fields, gettersetter , no inheritance getter setter, used mailnly to store data
+
+package spring;
+
+public class Employee {
+    private int id;
+    private String name;
+    private int age;
+    private int salary;
+    private String designation;
+    
+    //2methods one with geter seter one with constructor
+
+    // Getters and Setters
+  //  public int getId() { return id; }
+  //  public void setId(int id) { this.id = id; }
+
+  //  public String getName() { return name; }
+   // public void setName(String name) { this.name = name; }
+
+    //public int getAge() { return age; }
+   // public void setAge(int age) { this.age = age; }
+
+//    public int getSalary() { return salary; }
+//    public void setSalary(int salary) { this.salary = salary; }
+//
+//    public String getDesignation() { return designation; }
+//    public void setDesignation(String designation) { this.designation = designation; }
+
+    
+    // 2nd method constructor
+    
+    public Employee(int id,String name,int age,int salary,String designation) {
+    	this.id=id;
+    	this.name=name;
+    	this.age=age;
+    	this.salary=salary;
+    	this.designation=designation;
+    }
+    
+    // Display method
+    public void display() {
+        System.out.println("Employee Details:");
+        System.out.println("ID: " + id);
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
+        System.out.println("Salary: " + salary);
+        System.out.println("Designation: " + designation);
+    }
+
+    // toString method
+    @Override
+    public String toString() {
+        return "Employee [id=" + id + ", name=" + name + ", age=" + age +
+               ", salary=" + salary + ", designation=" + designation + "]";
+    }
+}
+
+-------------------------------------------------------------------------
+What is a Bean in Spring?
+
+ a bean is simply an object that is created, managed, and controlled by the Spring IoC (Inversion of Control) Container.
+
+
+
+
+
+
+
+
+
+
+
+
+ 

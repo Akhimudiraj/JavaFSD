@@ -1,0 +1,261 @@
+sealed class
+
+A sealed class is a class that says:
+
+“Only these specific classes are allowed to extend me.”
+
+Normally, any class can extend another class (if it’s not final). But with sealed, you control the hierarchy.
+
+To restrict inheritance. Only a limited set of subclasses can exist.
+
+Makes it easier for the compiler and developer to know all possibilities.
+
+Useful when you want a fixed set of types, like shapes, payment methods, or events.
+
+----------------------------------------------------------------
+
+Simple Analogy
+
+Sealed class → A VIP club: only invited people can enter.
+
+Final subclass → A VIP who can’t invite anyone else.
+
+Non-sealed subclass → A VIP who can invite friends.
+
+
+// Sealed class: only the specified classes can extend it
+public sealed class PaymentMethod permits CreditCard, PayPal, Cash {
+}
+
+// Subclass 1
+public final class CreditCard extends PaymentMethod {
+    String cardNumber;
+}
+
+// Subclass 2
+public final class PayPal extends PaymentMethod {
+    String email;
+}
+
+// Subclass 3
+public final class Cash extends PaymentMethod {
+    boolean exactChange;
+}
+
+PaymentMethod is sealed → only CreditCard, PayPal, and Cash can extend it.
+
+Each subclass is final → no one can extend CreditCard, PayPal, or Cash.
+
+This ensures that all possible payment methods are known and controlled
+
+-------------------------------------------------------------------------
+example with non sealed class 
+
+// Sealed class: only allowed subclasses listed
+public sealed class PaymentMethod permits CreditCard, PayPal, DigitalWallet {
+}
+
+// Final subclass: cannot be extended
+public final class CreditCard extends PaymentMethod {
+    String cardNumber;
+}
+
+// Final subclass: cannot be extended
+public final class PayPal extends PaymentMethod {
+    String email;
+}
+
+// Non-sealed subclass: can be extended by anyone
+public non-sealed class DigitalWallet extends PaymentMethod {
+    String walletId;
+}
+
+<><><><><><><><><><><><><><>
+proof to non sealed class
+<><><><><><><><><><><><><><
+
+// Since DigitalWallet is non-sealed, we can extend it
+public class ApplePay extends DigitalWallet {
+    String deviceId;
+}
+
+public class GooglePay extends DigitalWallet {
+    String deviceId;
+}
+-----------------------------------------------------------------------------
+
+syntax :
+public record RecordName(ComponentType1 component1, ComponentType2 component2, ...) { 
+    // optional methods or constructors
+}
+
+
+What is a Record?
+
+Think of a record like a data container—its job is just to store some data.
+
+Example: You want to store information about a person: name and age.
+
+Normally, in Java, you would write a class with fields, getters, a constructor, and methods like toString().
+
+Records are like simple containers for data.
+
+Automatically provide fields, constructor, getters, toString, equals, hashCode.
+You can add extra methods for custom behavior.
+You can add a constructor to validate data.
+Fields in records are immutable (cannot change after creation).
+
+
+<><><><><><><>regular class<><><><><><><><
+public class Person {
+    private final String name;
+    private final int age;
+
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public String getName() { return name; }
+    public int getAge() { return age; }
+
+    @Override
+    public String toString() {
+        return "Person[name=" + name + ", age=" + age + "]";
+    }
+}
+
+
+<><><><><><><><><><record<><><>><><><>
+public record Person(String name, int age) { }
+
+That’s it!
+
+Java automatically gives you:
+
+Fields name and age
+
+Constructor to set values
+
+Methods name() and age() to access values
+
+toString(), equals(), and hashCode()
+
+
+
+
+Person p = new Person("Alice", 25);
+System.out.println(p.name());  // Alice
+System.out.println(p.age());   // 25
+System.out.println(p);         // Person[name=Alice, age=25]
+
+
+we can create methods inside
+
+public record Person(String name, int age) {
+    public boolean isAdult() {
+        return age >= 18;
+    }
+}
+
+Person p = new Person("Bob", 17);
+System.out.println(p.isAdult()); // false
+
+-<><><><><><><> constructor with validation<><><><><>
+
+public record Person(String name, int age) {
+    public Person {
+        if (age < 0) {
+            throw new IllegalArgumentException("Age cannot be negative");
+        }
+    }
+}
+
+Person p = new Person("Charlie", -5); // ❌ Throws exception
+
+
+
+-----------------------------------------------------------------------------------------------
+
+optional class
+
+What is Optional in Java?
+
+it present in java.util ackage
+
+Optional<T> is a container object that may or may not hold a non-null value.
+It was introduced in Java 8 to help us avoid NullPointerException (NPE).
+
+Think of it like a box:
+
+The box may contain a value
+
+Or the box may be empty
+
+<><><><><>><><><><><before optional we used to write <><
+
+String name = user.getName();
+if (name != null) {
+    System.out.println(name);
+}else{
+syso("no name")
+}
+
+<><><><><><><><><>after optional<><><><><><<><><><><><><><><>
+
+public Optional<String> findUserEmail(int id) {
+    if (id == 1) {
+        return Optional.of("user@gmail.com");
+    }
+    return Optional.empty();
+}
+
+public static void main(String[] args) {
+    Optional<String> email = findUserEmail(1);
+
+    email.ifPresent(System.out::println);  
+}
+
+{}{}{}{}{}{}{} advantages{}{}{}{}{}{}{}{}{
+avoid null pointer exceptions
+improve code readability
+best api design 
+
+
+---------------------------------------------------------------------------------------------
+
+isPresent() V/s isEmpty()
+ 
+what multiple inheritance will not support in terms of class 
+ 
+how to create a custom exception in java 
+ 
+how to handle 
+ 
+diff between , throw and throws 
+ 
+collection and collections 
+ 
+compatable and comaraters 
+
+extending the Thread Class nd implementing the interface 
+ 
+generally when you guys go for over load and over ride give me example 
+ 
+in what  time u you choose the abstract and interfere 
+ 
+can we over ride the static method , if no y ? 
+ 
+diff between final , finally , finilize 
+ 
+object class and its methods 
+ 
+access and non access modifers 
+ 
+pacages 
+ 
+ 
+
+
+
+

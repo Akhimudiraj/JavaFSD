@@ -1,0 +1,416 @@
+questions 
+
+is it possible to insert the data in 2 database that in mysql and oracle sql when we are working wth maven projects ?
+
+yes its possible 
+add pom files>> application.properties>>creating onfiguration r both>> repo for two>>in service layer we have to save in both 
+
+
+----------------------------------microservices-------------------------------------
+
+https://www.geeksforgeeks.org/advance-java/java-microservices/
+https://www.geeksforgeeks.org/software-engineering/monolithic-vs-microservices-architecture/
+https://spring.io/blog/2015/07/14/microservices-with-spring
+https://javatechonline.com/microservices-in-java/  (impppppp)
+
+microservices is nothing but we diving application in many parts so that doesn't effect 
+
+
+--------------------------------------------eurekaserver------------------------------
+https://javatechonline.com/how-to-register-microservices-in-eureka-server/
+
+--------------------------------api gateway------------------------------------------
+https://javatechonline.com/implement-api-gateway-spring-boot-microservices/
+
+https://www.geeksforgeeks.org/advance-java/java-spring-boot-microservices-develop-api-gateway-using-spring-cloud-gateway/
+
+------------------------------------------------------------------------------------------------
+rest template , webclient, feign... to communicate one service to another 
+How to write REST Consumer API using Spring Boot RestTemplate
+
+https://javatechonline.com/how-to-write-rest-consumer-api-using-spring-boot-resttemplate/
+
+What is RestTemplate?
+
+RestTemplate is a synchronous client for calling REST APIs.
+It provides convenient methods to perform:
+
+GET
+
+POST
+
+PUT
+
+DELETE
+
+and more…
+
+It handles serialization/deserialization automatically using Jackson by default.
+
+ create rest template in main > 
+
+What is a DTO?
+
+A DTO (Data Transfer Object) is a class that contains only:
+
+Fields (variables)
+
+Getters & setters
+
+Maybe constructor
+
+No business logic
+
+Its purpose is to carry data between:
+
+Controller → Service
+
+Service → Repository
+
+Microservice A → Microservice B
+
+Backend → Frontend (JSON)
+
+🧠 Why do we use a DTO?
+
+To avoid exposing internal entity objects and to control exactly what data is sent.
+
+✔️ Benefits:
+
+Security: Hide sensitive fields (like password)
+
+Clean structuring: Separate database models from API models
+
+Validation: Apply @Valid annotations
+
+Microservices: Share only required fields across services
+
+---------------------------------------------------------------------------------------------------
+webclient 
+https://javatechonline.com/webclient-in-spring-boot/
+
+🚀 What is WebClient?
+
+WebClient is the new & improved way to call another microservice in Spring Boot.
+It replaces RestTemplate (which is now deprecated).
+
+WebClient features:
+
+Non-blocking (faster)
+
+Asynchronous
+
+Better error handling
+
+Modern way to call APIs inside microservices
+
+having general methods like . fetch, url, delete
+here also webcient reation n main application	
+
+Because WebClient is async, but your method is not reactive.
+To keep it simple, .block() makes it behave like RestTemplate (sync).
+
+--------------------------------------
+feign client-----
+How to Implement Feign Client in Spring Boot Microservices?
+
+https://javatechonline.com/how-to-implement-feign-client-in-spring-boot-microservices/
+
+🚀 What is Feign Client?
+
+Feign Client is a declarative REST client in Spring Cloud.
+
+Declarative means:
+👉 You don’t write WebClient / RestTemplate code
+👉 You just write an interface
+👉 Spring automatically generates the REST call code
+
+FEIGN = Easy way to call another microservice
+
+add dependencies >> add annotation in main > create interface > use interface in controller
+------------------------------------------
+
+
+
+which to use 
+
+if we want simple and clean communication ___> fien client
+
+if u want high performance + non blocking ------>use webclient
+
+if u want to maintain legacy project --->rest template 
+
+------------------------------------------------------------------------
+
+
+
+1. Circuit Breaker (using Resilience4j)
+
+Think of a circuit breaker in your house.
+
+When a device overloads, the breaker trips to prevent further damage.
+
+After some time, it tries again.
+
+In microservices, a circuit breaker protects your service from repeatedly calling a failing downstream service.
+
+States
+State	Meaning
+Closed	Everything is normal; requests flow.
+Open	Service is failing; stop calling it.
+Half-Open
+
+
+
+circuit breaker  
+📱 You call someone (CLOSED state)
+❌ Person not answering repeatedly (FAILURES)
+→ You stop calling for a few minutes (OPEN state)
+⏳ After waiting, you try calling once again (HALF-OPEN)
+✔ If they answer → continue calling normally (CLOSED)
+❌ If they still don't answer → stop calling again (OPEN)
+
+---------------------------
+2. Fallback Method
+
+A fallback is a backup response when the main method fails.
+
+Example:
+If your payment service is down, you return:
+
+“Payment service unavailable. Please try after some time.”
+
+A fallback avoids complete failure and returns a graceful response instead of an error.
+
+---------------------------------------------------
+3. Timeout
+
+A timeout defines how long you wait for a response from another service.
+
+If a service does not reply within the timeout (e.g., 3 seconds), Resilience4j cancels the call.
+
+Why needed?
+
+To avoid hanging threads
+
+To avoid slow services freezing the entire system
+
+--------------------------------------------------------------------
+4. Retry
+
+Retry means:
+"If the call fails, try again after a small delay."
+
+Example:
+If a request fails due to network glitch → retry 3 times before giving up.
+
+But too many retries can overload a system
+
+So you must configure retries carefully.
+
+------------------------------------------------------------------------
+5. Rate Limiting
+
+Rate limiting controls how many requests a user/service can make per second/minute.
+
+Example:
+Allow only 10 requests per second.
+If more requests arrive → they are blocked.
+
+Why?
+
+Prevent abuse
+
+Protect servers
+
+Ensures fair usage
+
+----------------------------------------------------------------------------------------------
+
+Putting it all together (Simple Scenario)
+
+Your microservice calls Product Service to get product details.
+
+What can happen?
+
+Product service is slow → timeout triggers
+
+Product service is down → circuit breaker opens
+
+Temporary network issue → retry tries again
+
+Too many users calling → rate limiter blocks extra calls
+
+Everything fails → fallback sends a friendly message
+----------------------------------------------------------------------------------------
+
+step1 : add dependencies of resillince (it s like a tool for safety) >
+
+Resilience4j helps your application survive failures such as:
+
+Another service is slow
+
+Another service is down
+
+Network problems
+
+Sudden traffic spikes
+
+It protects your code using patterns like:
+
+Circuit Breaker
+
+Retry
+
+Rate Limiter
+
+Time Limiter (Timeout)
+
+Bulkhead
+
+Fallback Mechanisms
+step 2: \\
+
+public class ProductService {
+
+    private final RestTemplate restTemplate = new RestTemplate();
+    private static final String SERVICE = "productService";
+
+    @CircuitBreaker(name = SERVICE, fallbackMethod = "fallbackMethod")
+    @Retry(name = SERVICE)
+    @RateLimiter(name = SERVICE)
+    @TimeLimiter(name = SERVICE)
+    public CompletableFuture<String> getProduct() {
+        return CompletableFuture.supplyAsync(() -> {
+            // Simulate calling another microservice
+            String url = "http://localhost:8081/product";
+            return restTemplate.getForObject(url, String.class);
+        });
+    }
+
+    // fallback method
+    public CompletableFuture<String> fallbackMethod(Exception ex) {
+        return CompletableFuture.supplyAsync(
+                () -> "Product service not available. Please try later!");
+    }
+}
+
+
+step3 : use that in control latyer 
+step 4: add in application properties
+
+If 50% of the last 5 calls fail → breaker opens.
+Requests stop going to the product service.
+
+✔ Retry
+
+If a call fails → retry 3 times with 1 sec delay.
+
+✔ Rate Limiter
+
+Allows 5 requests per second.
+Extra requests → blocked.
+
+✔ Timeout
+
+If the product service doesn’t respond within 2 seconds → timeout.
+
+✔ Fallback
+
+If all fail → return:
+"Product service not available. Please try later!"
+
+
+
+------------------------------------------------------------------------------
+
+
+Property	                                      Meaning
+slidingWindowSize = 5	       Look at last 5 calls to calculate failure rate
+minimumNumberOfCalls = 3	Need at least 3 calls before evaluating
+failureRateThreshold = 50	       Open breaker if 50% or more calls fail
+waitDurationInOpenState = 5s	 Stay open (block calls) for 5 seconds
+
+
+--------------------------------------------------------------------------
+
+microservices design patterns 
+
+Category	                     		 Key Patterns	                                                                         Purpose
+Decomposition	              By Business Capability, By Subdomain	                            Define microservice boundaries
+Integration                  	API Gateway, Aggregator, Proxy                         	Service communication & aggregation
+Database                   	DB per Service, Saga, CQRS					Data management & consistency
+Observability             	Logging, Tracing, Health Check, Circuit Breaker			Monitoring & debugging
+Reliability            	Retry, Circuit Breaker, Bulkhead, Timeout					Fault tolerance & resilience
+Messaging          	Event-Driven, Message Broker, Event Sourcing				Asynchronous communication
+Security	             Token Auth, Gateway Offloading, Access Control				Protect services & data
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+gate way pattern
+
+Client → sends requests to API Gateway.
+
+Gateway → routes the request to the appropriate microservice(s).
+
+Gateway → can also aggregate responses from multiple services before returning to the client.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+service registr pattern
+
+The Service Registry Pattern provides a central directory where services register themselves and clients discover them.
+
+Each microservice instance registers itself with the Service Registry when it starts, providing:
+
+Service name
+
+Network location (IP, port)
+
+Optional metadata (version, health check endpoint)
+
+When a client wants to call a service, it asks the Service Registry for the current location(s) of the service.
+
+The registry may also support health checks to remove unhealthy instances automatically.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+circuit breaker pattern
+
+
+The Circuit Breaker Pattern is a resilience pattern in microservices used to prevent cascading failures and improve system stability. Here’s a detailed explanation:
+open close half open
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+saga pattern
+
+The Saga Pattern is a microservices design pattern used to manage distributed transactions across multiple services without using traditional ACID transactions. Here’s a detailed breakdown:
+
+A saga is a sequence of transactions across services:
+
+Each service performs its local transaction and publishes an event.
+
+The next service listens to the event and performs its transaction.
+
+If a transaction fails, compensating transactions are executed to undo the previous steps.
+
+Real-World Analogy
+
+Imagine booking a trip:
+
+Book flight
+
+Book hotel
+
+Book car rental
+
+If hotel booking fails, you cancel the flight and any prior bookings.
+
+Each step is a local transaction, with compensating actions if needed.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+cqrs pattern
+
+The CQRS (Command Query Responsibility Segregation) Pattern is a microservices design pattern that separates read and write operations to improve scalability, performance, and maintainability.
+

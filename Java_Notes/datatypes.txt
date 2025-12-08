@@ -1,0 +1,3 @@
+https://www.ggorantala.dev/what-are-primitive-data-types-in-java/
+
+https://www.geeksforgeeks.org/java/java-data-types/

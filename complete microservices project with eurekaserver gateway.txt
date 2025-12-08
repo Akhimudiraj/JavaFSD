@@ -1,0 +1,149 @@
+project
+----------------------------------------
+eureka server : dependencies : devtools, eureka server, spring web, spring boot tester and mokito or testing
+add application properties  : server.port=8761
+
+# Eureka server config
+eureka.client.register-with-eureka=false
+eureka.client.fetch-registry=false
+
+management.endpoints.web.exposure.include=*
+management.endpoint.health.show-details=always
+
+add @eurekaserver in main method 
+
+add dockerfile 
+
+exxample
+(FROM openjdk:17-jdk-slim
+WORKDIR /app
+COPY target/transaction-service-0.0.1-SNAPSHOT.jar app.jar
+EXPOSE 8082
+ENTRYPOINT ["java", "-jar", "app.jar"])
+
+--------------------------------------------------------------------------------------------------
+Account service
+dependencies : devtools, Lombok, validations, spring data jpa, MySQL driver, eureka client , spring web
+
+@enable discovery client in main
+
+model, repo, service, controller, service 
+application properties : add erueka (eureka.client.service-url.defaultZone=http://localhost:8761/eureka) and database connection
+
+add dockerfile 
+
+exxample
+(FROM openjdk:17-jdk-slim
+WORKDIR /app
+COPY target/transaction-service-0.0.1-SNAPSHOT.jar app.jar
+EXPOSE 8082
+ENTRYPOINT ["java", "-jar", "app.jar"])
+
+---------------------------------------------------------------------------------------------
+notification service 
+dependencies : web, devtools,eureka client, lomobk
+
+@enable discovery client in main
+model,controller,
+application properties  : eureka client and port
+
+add dockerfile 
+
+exxample
+(FROM openjdk:17-jdk-slim
+WORKDIR /app
+COPY target/transaction-service-0.0.1-SNAPSHOT.jar app.jar
+EXPOSE 8082
+ENTRYPOINT ["java", "-jar", "app.jar"])
+
+------------------------------------------------------------------------------------------
+Transaction Service 
+dependencies : devtools,Mysql river, Lombok, jpa, resilience4j, client, open feign, web
+
+@EnableDiscoveryClient
+@EnableFeignClients in main method
+
+model,repo,service,controller,feig,(accountclient,notificatinclint are interfaces , notificationmessage class (dto))
+
+add dockerfile 
+
+exxample
+(FROM openjdk:17-jdk-slim
+WORKDIR /app
+COPY target/transaction-service-0.0.1-SNAPSHOT.jar app.jar
+EXPOSE 8082
+ENTRYPOINT ["java", "-jar", "app.jar"])
+
+------------------------------------------------------------------------------------------
+Gateway
+dependencies : client, web,gateway,
+application properties add all routes
+spring.application.name=Gateway
+
+server.port=8080
+
+
+# Eureka Discovery
+eureka.client.service-url.defaultZone=http://localhost:8761/eureka/
+
+# Enable service discovery for gateway
+spring.cloud.gateway.discovery.locator.enabled=true
+
+# ---- ACCOUNT SERVICE ROUTE ----
+spring.cloud.gateway.routes[0].id=account
+spring.cloud.gateway.routes[0].uri=lb://ACCOUNT-SERVICE
+spring.cloud.gateway.routes[0].predicates[0]=Path=/api/accounts/**
+
+# ---- TRANSACTION SERVICE ROUTE ----
+spring.cloud.gateway.routes[1].id=transaction
+spring.cloud.gateway.routes[1].uri=lb://TRANSACTION-SERVICE
+spring.cloud.gateway.routes[1].predicates[0]=Path=/api/transactions/**
+
+# ---- NOTIFICATION SERVICE ROUTE ----
+spring.cloud.gateway.routes[2].id=notification
+spring.cloud.gateway.routes[2].uri=lb://NOTIFICATION-SERVICE
+spring.cloud.gateway.routes[2].predicates[0]=Path=/api/notifications/**
+
+
+add dockerfile 
+
+exxample
+(FROM openjdk:17-jdk-slim
+WORKDIR /app
+COPY target/transaction-service-0.0.1-SNAPSHOT.jar app.jar
+EXPOSE 8082
+ENTRYPOINT ["java", "-jar", "app.jar"])
+-----------------------------------------------------------------------------------------------Docker 
+create docker files in every microservice 
+exxample
+(FROM openjdk:17-jdk-slim  (if slim not working use this FROM eclipse-temurin:17-jdk-alpine
+)
+WORKDIR /app
+COPY target/transaction-service-0.0.1-SNAPSHOT.jar app.jar
+EXPOSE 8082
+ENTRYPOINT ["java", "-jar", "app.jar"])
+
+next>run as maven build > goal: clean build
+
+go to properties copy the path and check it exists or not 
+
+open cmd with file location 
+
+example(C:\Users\karnam harika\Desktop\Banking System Simulator (Microservices Architecture with Spring Boot + MongoDB)\AccountService>docker build -t account-service .)
+
+>>docker images 
+
+Use >>docker tag <image ID> yourImagename:latest 
+
+Use>> docker run docker run -p 8081:8081 account-service
+
+
+
+
+
+
+
+
+
+
+

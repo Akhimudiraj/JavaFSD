@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function add(){
+           a= parseInt(document.getElementById('a').value);
+           b=parseInt(document.getElementById('b').value);
+           c=a+b;
+           alert("Result "+c)
+
+        }
+
+          function sub(){
+           a= parseInt(document.getElementById('a').value);
+           b=parseInt(document.getElementById('b').value);
+           c=a-b;
+           alert("Result "+c)
+
+        }
+
+          function mul(){
+           a= parseInt(document.getElementById('a').value);
+           b=parseInt(document.getElementById('b').value);
+           c=a*b;
+           alert("Result "+c)
+
+        }
+
+          function div(){
+           a= parseInt(document.getElementById('a').value);
+           b=parseInt(document.getElementById('b').value);
+           c=a/b;
+           alert("Result "+c)
+
+        }
+    </script>
+</head>
+<body>
+    
+
+    <div style="text-align: center;">
+      A:  <input type="text" name="" id="a"> <br>
+       B: <input type="text" name="" id="b">
+        <br><br>
+
+        <input type="submit" value="Add" name="" id="" onclick="add()">
+        <input type="submit" value="sub" onclick="sub()" name="" id="">
+        <input type="submit" value="mul" onclick="mul()" name="" id="">
+        <input type="submit" value="div" onclick="div()" name="" id="">
+
+    </div>
+</body>
+</html>

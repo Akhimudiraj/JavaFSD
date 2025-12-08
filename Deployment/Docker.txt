@@ -1,0 +1,82 @@
+Docker = A tool to package, ship, and run applications in isolated environments called containers.
+
+Docker is a platform that allows you to package an application along with everything it needs—code, libraries, settings—into a single unit called a container.
+
+Think of a container like a box that includes:
+
+✔ Your application
+✔ All required software (Java, Python, Node, etc.)
+✔ All dependencies
+✔ Configurations
+
+Because everything is packed into this container, the application will run exactly the same on any machine.
+
+----------------------------------------------------------------------------------------
+
+What is a Docker Image?
+
+A Docker Image is a blueprint (or template) for creating containers.
+Think of it like:
+A class in Java
+A recipe in cooking
+A blueprint for building a house
+
+It contains:
+
+✔ Your application code
+✔ Required libraries
+✔ Dependencies
+✔ Environment settings
+✔ Startup instructions
+
+Images are read-only.
+You cannot change an image after it is created.
+
+-------------------------------------------------------------------------------------------
+What is a Docker Container?
+
+A Docker Container is a running instance of an image.
+
+If the image is a recipe...
+👉 The container is the final cooked dish.
+
+If the image is a Java class...
+👉 The container is the object created using new.
+
+If the image is a blueprint...
+👉 The container is the actual building.
+
+A container:
+
+✔ Is created from an image
+✔ Runs your application
+✔ Has its own isolated environment
+✔ Can start, stop, restart, delete
+
+-------------------------------------------------------------------------------
+Concept	   		Meaning				Easy Reminder
+Docker Image		Blueprint / Recipe		You build it
+Docker Container	Running application		You run it
+
+In docker.jar file helps to send the code to container 
+
+create sts and setup everything for docker.....
+
+after inserting in docker 
+to test we have to move to dockerhub  that possibe to test in another laptop
+
+<<<<<<Laptop A>>>>
+to push to universal so anyone can download 
+docker tag myimage karanamharish18/myimage:latest
+docker push karanamharish18/myimage:latest
+
+<<<<<<Laptop B>>>>
+ docker pull karanamharish18/myimage:latest
+
+docker run -p 8080:8080 karanamharish18/myimage:latest
+
+http://localhost:8080/getData
+
+
+
+

@@ -1,0 +1,227 @@
+html
+
+
+TIM berner lee --1991
+html5
+
+html - structure 
+
+
+
+html : tags attributes, Heading paragraph, br,hr, forms, tables, list,
+-------------------------------------------------------------------------
+html5 tags
+semantic tags : the tags which give proper meaning :header, footer
+non semantic:the tags which doesn't give meaning div, span
+formtags
+header,footer,nav,section,media,text formatting,table,list
+
+HTML5 tags are semantic elements introduced to provide meaningful structure to webpages, improve accessibility, SEO, and readability. Examples: <header>, <footer>, <section>, <nav>, <article> etc.
+
+---------------------------------------------------------------------------------------
+css : types , selectors, border, background, margin, padding,
+(imp) box model , grid,animations,text, flex
+
+------------------------------------------------------------------------------------
+BOOTSTRAP 
+
+TODAY CONCEPTS 
+(GRID, TABLE, FRMS, BUTTONS, PAGINATION, progress, COLLAPSE, MODEL )
+(Navigation,
+ curosel,
+
+tooltip : A Tooltip is a small pop-up box that appears when the user hovers, focuses, or touches an element.
+It is mainly used to show extra information without taking space on the page.
+---------------------------------------------------
+,pooper : A popover is a small message box that appears when you click or hover on an element.
+It looks like a tooltip but can contain more text, HTML, and titles.
+
+Example:
+When you click a button → a small box pops up with extra information.
+-------------------------------------------------------------------------------
+, images : p>In Bootstrap, “images” means the predefined image helper classes that make images look better and behave responsively without writing extra CSS.</p>
+
+
+    <img src="./images/chicago.jpg" class="img-rounded img-responsive" style="width:200px;" alt="Cinque Terre">
+    <img src="./images/chicago.jpg" class="img-circle img-responsive" style="width:200px;" alt="Cinque Terre"> <!--thubmnail-->>
+
+------------------------------------------------------------
+Glyphicons
+Bootstrap provides 260 glyphicons from the Glyphicons Halflings set.
+
+Glyphicons can be used in text, buttons, toolbars, navigation, forms, etc.
+
+Here are some examples of glyphicons:
+
+Envelope glyphicon: 
+
+Print glyphicon: 
+
+Search glyphicon: 
+
+Download glyphicon: 
+
+
+--------------------------------------------------------------------------------
+
+Bootstrap is a popular front-end framework used to quickly build responsive and mobile-friendly websites. It provides ready-made CSS and JavaScript components so you don’t have to code everything from scratch.
+https://getbootstrap.com/docs/5.3/layout/breakpoints/
+https://getbootstrap.com/docs/5.0/getting-started/introduction/
+
+ For writing styling we are using css right 
+So instead of that we are using bootstrap
+ Soo all the things are inbuiltly available
+ So simple we can copy that bootstrap link 
+And target with the class name add the name what ever u want 
+Table ,grid, forms...
+ So directly it triggers
+-----------------------------------------------------------------------------------------------
+JS
+
+Events are signals that something has happened — like a user clicking a button or a page finishing loading.
+
+Examples:
+
+Clicking a button → click event
+
+Moving the mouse → mousemove event
+
+Pressing a key → keydown event
+
+Form submission → submit event
+
+Page loaded → load event
+
+-------------------------------------------------------------------------------------------
+
+classList is a built-in JavaScript property that allows you to add, remove, toggle, or check CSS classes of an HTML element.
+
+---------------------------------------------------------------------------------------------
+npm install -g typescript (install the type script)
+tsc file_name_with xtension (demo.t) (compile)
+node  file_name (demo) (run)
+
+? (optional purpose)
+GET is default parameter 
+parameter normal
+overloading doesn't support 
+
+var is global scope, let is local scope 
+
+TYPE SCRIPT
+
+✅ What Is TypeScript?
+
+TypeScript is a superset of JavaScript that adds static typing, better tooling, and developer-friendly features on top of JS. It compiles down to plain JavaScript.
+
+Why TypeScript?
+
+Catches errors at compile time
+Better IntelliSense & editor support
+Safer refactoring
+Supports OOP features (interfaces, generics, etc.)
+Makes large codebases easier to maintain
+
+Why Use TypeScript When We Already Have JavaScript?
+
+TypeScript does not replace JavaScript — it enhances it.
+It solves problems that JavaScript alone cannot solve, especially in medium to large projects.
+
+JavaScript only catches errors at runtime, not while writing code.but type script catches during the compile time 
+
+----------------------------------------------------------------------
+example for js
+
+function add(a, b) {
+  return a + b;
+}
+
+add(10, "5"); // "105" (bug!)
+================
+example for ts
+
+function add(a: number, b: number): number {
+  return a + b;
+}
+
+add(10, "5"); // ❌ Error shown immediately
+
+---------------------------------------------------------------------------------
+NOrmal parameter
+
+function greet(name: string, age: number) {
+    console.log(`Hello ${name}, age is ${age}`);
+}
+
+greet("Akhil", 22);  // ✔️ must pass both parameters
+
+
+==============================
+Optional parameter (?) this should be at last 
+
+function greet(name: string, age?: number) {
+    console.log(`Hello ${name}`);
+    
+    if (age !== undefined) {
+        console.log(`Age is ${age}`);
+    }
+}
+
+greet("Akhil");         // ✔️ age is optional
+greet("Akhil", 22);     // ✔️ works
+
+=====================================
+Default parameter 
+If the caller does not pass a value, the default value is used.
+
+function greet(name: string, age: number = 20) {
+    console.log(`Hello ${name}, age is ${age}`);
+}
+
+greet("Akhil");       // uses default age = 20
+greet("Akhil", 25);   // uses passed value 25
+
+-------------------------------------------------------------------------------
+Rest parameter
+
+it is used to pass any number of aruguments  to  a function 
+it should be last parameter
+syntax :
+function func(...args: number[]) {
+    console.log(args);
+}
+
+funcName − It's the name of our function.
+...rest − it stores the multiple arguments to the array named rest.
+type[] − it specifies the type of the arguments
+===================================
+function sum(...numbers: number[]) {
+    let total = 0;
+    for (let n of numbers) {
+        total += n;
+    }
+    console.log(total);
+}
+
+sum(1, 2, 3);           // 6
+sum(5, 10, 15, 20);     // 50
+=========================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

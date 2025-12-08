@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script>
+        function showresult(value){
+            document.getElementById('result').value=value;
+        }
+
+        function add(){
+            let a=parseInt(document.f1.firstnumber.value);
+            let b=parseInt(document.f1.secondnumber.value);
+          //  alert("REsult "+(a+b));
+          showresult(a+b);
+          
+            
+        }
+         function sub(){
+            let a=parseInt(document.f1.firstnumber.value);
+            let b=parseInt(document.f1.secondnumber.value);
+            showresult(a-b);
+        }
+         function mul(){
+            let a=parseInt(document.f1.firstnumber.value);
+            let b=parseInt(document.f1.secondnumber.value);
+            showresult(a*b);
+        }
+         function div(){
+            let a=parseInt(document.f1.firstnumber.value);
+            let b=parseInt(document.f1.secondnumber.value);
+            showresult(a/b);
+        }
+    </script>
+</head>
+<body>
+    
+
+
+
+    <form name="f1" action="" style="text-align: center;">
+
+        <label for="">firstnumber</label>
+        <input type="text" name="firstnumber" class="form-check-inline">
+        <br>
+        <label for="">secondnumber</label>
+        <input type="text" name="secondnumber" class="form-check-inline">
+        <br>
+
+                <button type="button" class="btn btn-primary" onclick="add()">Add</button>
+                <button type="button" class="btn btn-info" onclick="sub()">Sub</button>
+                <button type="button" class="btn btn-warning" onclick="mul()">Mul</button>
+                <button type="button" class="btn btn-danger" onclick="div()">Div</button>
+
+        <br>
+        <label for="">Result</label>
+        <input type="text" id="result" class="form form-check-inline" >
+
+    </form>
+</body>
+</html>

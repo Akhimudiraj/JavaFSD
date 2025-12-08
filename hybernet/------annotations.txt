@@ -1,0 +1,137 @@
+------annotations 
+@Entity
+@Table
+@ID
+@Column
+@transient
+@Generatedvalue
+
+
+JPA (Java Persistence API) annotations used in ORM (Object-Relational Mapping
+
+@Entity
+
+Purpose: Marks a class as a JPA entity, meaning it maps to a table in the database.
+
+Effect: Hibernate treats this class as something it needs to persist.
+
+Example:
+
+@Entity
+public class Employee {
+    // fields
+}
+
+----------------------------------------------------------------------------------
+
+@Table
+
+Purpose: Specifies the table name in the database that the entity maps to.
+
+Default: If not specified, Hibernate uses the class name as the table name.
+
+Example:
+
+@Entity
+@Table(name = "employee_details")
+public class Employee {
+    // fields
+}
+
+--------------------------------------------------------------------------------------
+@Id
+
+Purpose: Marks a field as the primary key of the entity (unique identifier).
+
+Example:
+
+@Id
+private int empId;
+
+--------------------------------------------------------------------------------------------
+@GeneratedValue
+
+Purpose: Defines how the primary key (@Id) value is auto-generated.
+
+Common Strategies:
+
+GenerationType.AUTO → Hibernate decides the best strategy.
+
+GenerationType.IDENTITY → Uses auto-increment columns (e.g., MySQL).
+
+GenerationType.SEQUENCE → Uses database sequences (e.g., Oracle).
+
+GenerationType.TABLE → Uses a separate table to generate IDs.
+
+Example:
+
+@Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+private int empId;
+
+---------------------------------------------------------------------------------
+
+@Column
+
+Purpose: Maps a class field to a specific column in the table.
+
+Optional attributes:
+
+name → custom column name
+
+length → max length for VARCHAR columns
+
+nullable → whether null is allowed
+
+unique → whether values must be unique
+
+Example:
+
+@Column(name = "employee_name", length = 50, nullable = false)
+private String name;
+
+-----------------------------------------------------------------------------------------
+
+@Transient
+
+Purpose: Marks a field that should not be saved (ignored by JPA).
+
+Use case: You want a variable in the class that doesn’t exist in the database.
+
+Example:
+
+@Transient
+private int tempCalculation;
+
+----------------------------------------------------------------------------------------
+example
+
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "employee_details")
+public class Employee {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int empId;
+
+    @Column(name = "employee_name", length = 50, nullable = false)
+    private String name;
+
+    @Column(name = "salary")
+    private double salary;
+
+    @Transient
+    private double bonus; // not stored in DB
+
+    // getters and setters
+}
+
+
+
+----------------------------------------------------------------------------------
+@onetoone
+@onetomany
+@manytoone
+@manytomany

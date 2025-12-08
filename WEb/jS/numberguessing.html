@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Guessing Game</title>
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+      body{
+        text-align: center;
+      }
+    </style>
+</head>
+<body>
+
+   <form action="" class="form">
+     <h1>Number Guessing Game</h1>
+    <p>Guess a number between 1 and 100:</p>
+
+    <input type="number" id="guessInput" min="1" max="100">
+    <button id="guessBtn" class="btn-info">Guess</button>
+    <button id="resetBtn" class="btn-danger">Restart</button>
+    <br> <br>
+
+    <div id="message">Good luck!</div> <br>
+    <div id="attempts">Attempts: 0</div>
+   </form>
+
+    <script>
+        
+
+        let randomNumber=15;
+        
+        let attemptCount = 0;
+
+        const guessInput = document.getElementById("guessInput");
+        const guessBtn = document.getElementById("guessBtn");
+        const resetBtn = document.getElementById("resetBtn");
+        const message = document.getElementById("message");
+        const attempts = document.getElementById("attempts");
+
+        guessBtn.addEventListener("click", function() {
+             event.preventDefault();
+            const userGuess = Number(guessInput.value);
+            attemptCount++;
+            attempts.textContent = "Attempts: " + attemptCount;
+
+            if(!userGuess || userGuess < 1 || userGuess > 100) {
+                message.textContent = "Please enter a number between 1 and 100.";
+                message.style.color = "red";
+            } else if(userGuess === randomNumber) {
+                message.textContent = `🎉 Correct! The number was ${randomNumber}.`;
+                message.style.color = "green";
+            } else if(userGuess < randomNumber) {
+                message.textContent = "⬆️ Too low! Try again.";
+                message.style.color = "orange";
+            } else {
+                message.textContent = "⬇️ Too high! Try again.";
+                message.style.color = "orange";
+            }
+
+           
+           
+        });
+
+        resetBtn.addEventListener("click", function() {
+             event.preventDefault();
+          
+            attempts.textContent = "Attempts: 0";
+            message.textContent = "Game restarted! Good luck!";
+            message.style.color = "blue";
+            guessInput.value = "";
+           
+        });
+    </script>
+
+</body>
+</html>

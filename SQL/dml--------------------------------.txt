@@ -1,0 +1,54 @@
+dml--------------------------------------------------------------------------------
+
+create database company;
+use company;
+create table employee(
+ employee_id int,
+ employee_name varchar(20),
+ employee_salary int,
+ employee_designation varchar(20),
+ employee_age int
+);
+INSERT INTO employee VALUES
+(101, 'Rakesh',   45000, 'Engineer',     28),
+(102, 'Priya',    52000, 'Manager',      35),
+(103, 'Amit',     30000, 'Technician',   25),
+(104, 'Neha',     60000, 'Manager',      40),
+(105, 'Rohan',    25000, 'Intern',       22),
+(106, 'Pooja',    48000, 'Engineer',     29),
+(107, 'Arjun',    55000, 'Engineer',     31),
+(108, 'Divya',    70000, 'HR',           38),
+(109, 'Kiran',    29000, 'Technician',   27),
+(110, 'Sneha',    32000, 'Intern',       23);
+
+insert into employee values(110, 'Sneha',    32000, 'Intern',       23);
+
+select * from employee;
+# Types of Operators
+
+# ORDER BY --> Used to sort the rows based on values in the column specified after ORDER BY.
+#               (By default, it sorts in ascending order)
+select * from employee order by employee_salary DESC;
+# LIKE --> Used to search for a pattern in the value of a column for each row.
+select * from employee where employee_name LIKE "%h%";
+# BETWEEN --> Used to find values that lie within a specified range (inclusive of both ends).
+select * from employee where employee_salary between 30000 and 50000;
+# DISTINCT --> Shows only the unique (non-duplicate) rows.
+select distinct * from employee;
+select * from employee where employee_salary is NULL;
+# AND --> Combines two conditions and returns the result only if both are true.
+select * from employee where employee_salary > 50000 and employee_designation = 'Manager';
+# OR --> Combines two conditions and returns the result if at least one of them is true.
+select * from employee where employee_salary > 50000 or employee_designation = 'Manager';
+# NOT --> Returns the result if the condition is false (negates the condition).
+select * from employee where not employee_salary =  50000;
+# IN --> Used to check whether a column’s value lies within a specified set of values.
+select * from employee where employee_designation in ('Engineer','Manager','Technician');
+# NULL --> Used to check whether a column has a NULL (missing) value.
+insert into employee values(111,"Ram",NULL,'Manager',29);
+# AS --> Used to give a temporary name (alias) to a column or table.
+select employee_id as ID from employee;
+# GROUP BY --> Groups rows that have the same value in the specified column(s).
+select employee_designation, count(*) as number_of_employees from employee group by employee_designation;
+# HAVING --> Used to filter the results of GROUP BY (similar to WHERE, but works on groups).
+select employee_designation, count(*) as number_of_employees from employee group by employee_designation having count(*) > 2;

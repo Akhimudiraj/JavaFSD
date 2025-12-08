@@ -1,0 +1,60 @@
+DEVOPS
+
+DevOps is a combination of Development (Dev) and Operations (Ops).
+It is a culture, set of practices, and tools that help organizations deliver software faster, more reliably, and with higher quality.
+ci,cdelievey,deployment,iac,monitoring nd logging
+
+we use devops for faster delievery
+
+DevOps Lifecycle Stages:
+
+Plan – Track work using tools like Jira, Azure Boards
+Code – Developers write code
+Build – Code compiled (Maven, Gradle)
+Test – Automated tests run (JUnit, Selenium)
+Release – Automated release systems
+Deploy – Deploy to server or cloud
+Operate – Monitoring apps
+Monitor – Track performance & logs
+
+------------------------------------------------------------------------------------------
+dev+tester+oper works together  to make project faster 
+
+developer-test-pre prod- releases 
+
+example where the do 
+https://facebook.com (end client)
+http://devfacebook.com(devside)
+http://testfacebook.com(testerside)
+http://prodfacebook.com(produside)
+
+these are done by aws, azure, google cloud platform
+
+all these we call cloud technology
+ this track we call development track
+-------------------------------------------------------------------------------------
+
+dev : jdk,eclipse,vs code,postman,sts....
+
+JENKINS
+according to client we havae to update or add new features  so this take long process for manually so that y we use an automation tool 
+that tool is JENKINS so it does ci cd pipelines (automated or monitor or build)
+
+------------------------------------------------------------------------------
+
+Docker
+if one person developed with one version(windows, mac,lnux) and another person doing in another version like (windows, mac, linux)
+so for this reason we use DOCKER (whatever u developed i will zip it ) if u unzipped in linux it work or windows or android
+zip is nothing but containirizer 
+
+--------------------------------------------------------------------------
+DEvops tools
+
+GIt/scm (source code )
+docke/kubernets (verion zip)
+jinikins/bamboo (jenkins automatic doing )
+
+the data will be stored in cloud so data scientist manage the data
+dont no tody 10gb, tomorrow 100g so he will manage
+store the data in dataware house 
+these required more cool so mostly they build in underwater

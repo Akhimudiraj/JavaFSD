@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<!-- events are performed by user Events are signals that something has happened — like a user clicking a button or a page finishing loading.
+-->
+
+    <!-- 1st way-->
+    
+    <button onclick="abc()">singleclick</button>
+    <button ondblclick="ab()">doubleclick</button>
+    
+
+    <!--2nd way by using event listner-->
+    <button id="colorBtn">single clickChange Color</button>
+
+    <button id="colorBtn2">double click </button>
+
+    <!--document.body.style.background = "lightblue";
+    onclick,dbclick, mouseover,mouseout, keyboard events-->
+
+    <span id="box">box</span>
+
+    <form action="" id="formid">
+
+        <input type="text" name="fname" id="">
+        <input type="submit" value="submit" name="" id="">
+    </form>
+
+    
+
+<script>
+    document.getElementById("formid").addEventListener("submit",()=>{
+        alert("form submitted")
+    })
+document.getElementById("colorBtn").addEventListener("click", () => {
+    alert("Confirm to chnage color")
+    document.body.style.background = "lightblue";
+   
+   
+});
+
+document.getElementById("colorBtn2").addEventListener("dblclick", () => {
+    alert("double click")
+    document.body.style.background = "blue";
+});
+
+
+function abc(){
+    alert("button clicked")
+    
+
+}
+
+function ab(){
+    alert("button double click")
+}
+let box = document.getElementById("box");
+box.addEventListener("mouseover", function() {
+    box.style.background = "green";
+});
+
+box.addEventListener("mouseout", function() {
+    box.style.background = "red";
+});
+</script>
+
+</body>
+</html>

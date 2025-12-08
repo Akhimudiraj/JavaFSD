@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    
+
+    <h3>model</h3>
+
+    <img src="https://cdn.pixabay.com/photo/2023/02/06/21/14/cows-7772777_1280.jpg" width="100px" alt="">
+
+
+    <!-- Trigger the modal with a button -->
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Download To continue !!</button>
+
+<!-- Modal -->
+<div id="myModal" class="modal focus-ring-primary" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+      
+        <h4 class="modal-title">Danger !</h4>
+      </div>
+
+      <div class="modal-body">
+        <p>virus downloaded successfully!............. </p>
+      </div>
+
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Reset</button>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+
+  <h2>Bootstrap Modal Examples</h2>
+    <p>Basic, Large, Form, and Scrollable Modals</p>
+
+    <!-- --------------------------------------------------- -->
+    <!-- 1. BASIC MODAL -->
+    <!-- --------------------------------------------------- -->
+
+    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#basicModal">
+        Open Basic Modal
+    </button>
+
+    <div class="modal fade" id="basicModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                
+                <div class="modal-header">
+                    <h5 class="modal-title">Basic Modal</h5>
+                    <button class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+                    This is a simple Bootstrap modal.
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button class="btn btn-primary">Save Changes</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- --------------------------------------------------- -->
+    <!-- 2. LARGE MODAL -->
+    <!-- --------------------------------------------------- -->
+
+    <button class="btn btn-success mt-3" data-bs-toggle="modal" data-bs-target="#largeModal">
+        Open Large Modal
+    </button>
+
+    <div class="modal fade" id="largeModal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title">Large Modal</h5>
+                    <button class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+                    This is a large modal. Useful for large content.
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- --------------------------------------------------- -->
+    <!-- 3. FORM MODAL -->
+    <!-- --------------------------------------------------- -->
+
+    <button class="btn btn-warning mt-3" data-bs-toggle="modal" data-bs-target="#formModal">
+        Open Form Modal
+    </button>
+
+    <div class="modal fade" id="formModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title">Form in Modal</h5>
+                    <button class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label">Name</label>
+                            <input type="text" class="form-control">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100">Submit</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- --------------------------------------------------- -->
+    <!-- 4. SCROLLABLE MODAL -->
+    <!-- --------------------------------------------------- -->
+
+    <button class="btn btn-info mt-3" data-bs-toggle="modal" data-bs-target="#scrollModal">
+        Open Scrollable Modal
+    </button>
+
+    <div class="modal fade" id="scrollModal">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title">Scrollable Modal</h5>
+                    <button class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+                    <p>Scrollable content starts:</p>
+                    <p>Lorem ipsum dolor sit amet...</p>
+                    <p>(repeat content)</p>
+                    <p>Lorem ipsum dolor sit amet...</p>
+                    <p>Lorem ipsum dolor sit amet...</p>
+                    <p>Lorem ipsum dolor sit amet...</p>
+                    <p>Lorem ipsum dolor sit amet...</p>
+                    <p>Lorem ipsum dolor sit amet...</p>
+                    <p>Lorem ipsum dolor sit amet...</p>
+                    <p>Lorem ipsum dolor sit amet...</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>

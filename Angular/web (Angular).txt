@@ -1,0 +1,472 @@
+component : html : web page
+			css: style
+			ts : logical
+			spec.ts :testing
+
+routing
+		routerlink=""
+		<router-outlit>
+		configure in app.routing.modules.ts file 			{path:"name",component  componentname}
+		route guard later
+
+databinding : passing the data from html to ts a/ ts file html
+			2 ways
+				1)interpolation---{{}}
+				2)event binding
+				3)property binding 
+(ng modedl automatic data triggers)
+
+directives 
+pipes
+forms
+services
+
+
+web (Angular)
+check version 
+
+node --version
+npm --version
+ng version
+if angular missing
+npm install -g @angular/cli
+
+to create angular project
+ng new Demo1 --standalone=false(create a project) choose css>none
+
+cd demo1
+code .
+
+ng serve to open
+
+(to generate a component after createing project)
+ng generate component HOME
+
+------------------------------------------------------------------------------
+to route the components
+app.html  
+for link   <a routerLink="Signin">signin</a> |
+add <router-outlet></router-outlet> at last
+
+in app-routing-module add these 
+in const rule  path and components 
+
+const routes: Routes = [
+  {
+    path:'home',
+    component:Home
+  },
+  {
+    path:'dashboard',
+    component:Dashboard
+  },
+  {
+    path:'login',
+    component:Login
+  },
+  {
+    path:'Signin',
+    component:Signup
+  }
+  
+]; 
+------------------------------------------------------------------------------------------
+
+open git create repo add those in cmd to import project to git
+
+https://vercel.com/ (create account)
+add git select which to deploy 
+
+
+
+--------------------------------------------------------------------
+if any updated in code and that should modify in GitHub use 
+
+git add .
+git commit -m "updated code"
+git push
+
+
+-----------------------------------------------------------
+ng new Frontendapp --standalone=false
+>>CSS >>No>>None
+cd Frontendapp
+code .
+ng serve
+
+go into frontend and do this 
+
+ng generate component HOME
+....login, signin, dashboard
+components will be created
+
+app roting module.ts
+
+(routerlink instead of href)
+
+
+
+------------------------------------------------------------------------------------------
+Components  in Angular
+
+A component is a small, reusable block of UI in an Angular application.
+
+Each component is made up of:
+
+HTML → What you see
+
+CSS → How it looks
+
+TypeScript → How it works (logic)
+
+Selector → How to use it inside other components
+
+angular generates
+
+home/
+  home.component.ts      // logic
+  home.component.html    // template
+  home.component.css     // styles
+  home.component.spec.ts // test file (It is a unit testing file used by Angular’s testing framework (Jasmine + Karma).
+to test the component we use (ng test)
+Does the component load properly?
+Do functions work?
+Does the HTML render correct values?
+To catch bug early
+
+Why are components important?
+
+They make the UI modular
+Easy to test
+Easy to maintain
+Easy to reuse
+Help build large apps in small pieces
+
+Angular components = HTML + CSS + TS + selector
+All working together to form a part of the UI.
+
+
+---------------------------------------------------------------------------------------------
+
+What is Routing in Angular?
+
+Routing allows your Angular app to navigate between different components without reloading the page.
+It is used to build Single Page Applications (SPA).
+
+1. create components
+2.set up routes in app-routing.module.ts
+here
+const routes: Routes = [
+  { path: 'home', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'dashboard', component: DashboardComponent },
+
+3. add routerlink in app.html
+like this
+<a routerLink="/home">Home</a> |
+<a routerLink="/login">Login</a> |
+<a routerLink="/dashboard">Dashboard</a>
+
+In Angular, we use routerLink instead of href because Angular has its own routing system for Single Page Applications (SPA).
+
+href-reloads the whole page
+routing-changes routes without reloading
+
+---------------------------------------------------------------------------------------
+instead of router link also we can use <app-home></app-home>
+but5 this is not preferred
+
+-------------------------------------------------------------------------------------------
+Route guards (just to know )
+
+Angular Authentication Using Route Guards
+
+Route Guards in Angular allow you to control navigation based on conditions such as authentication, roles, unsaved changes, etc.
+For authentication, the most commonly used guard is CanActivate.
+
+1. What is a Route Guard?
+
+A Route Guard is a service that Angular calls before accessing a route.
+It returns:
+
+true → allow access
+
+false → block access (optionally redirect to login)
+
+steps :
+
+Step 1: Create an Authentication Service
+Step 2: Create an Auth Guard (CanActivate) (Implement the guard:)
+Step 3: Protect Routes in app-routing.module.ts
+Step 4: Add Login Logic
+
+---------------------------------------------------------------------------------------------
+
+binding (refer this (interpolation, eent binding, property binding))
+
+Data Binding in Angular
+1. Introduction
+
+Data binding in Angular is the process of connecting application data (TypeScript code) with the view (HTML template).
+It allows automatic synchronization of data between the component and the UI.
+
+2. Types of Data Binding in Angular (4)
+
+1. Interpolation (One-Way Data Binding → TS → HTML)
+
+Used to display component data in the HTML.
+Syntax:
+
+{{ variableName }}
+
+
+Example:
+ts
+name = 'Akhi';
+
+html
+<p>Hello {{ name }}</p>
+==========================================
+2. Property Binding (One-Way → TS → HTML Attribute/Property)
+
+Used to bind data to HTML element properties, not attributes.
+
+Syntax:
+[elementProperty]="value"
+
+
+Example:
+
+<input [value]="name">
+
+=========================================
+3. Event Binding (One-Way → HTML Event → TS function)
+
+Used to call TypeScript functions when events occur.
+
+Syntax:
+
+(eventName)="functionName()"
+
+
+Example:
+
+<button (click)="showMessage()">Click Me</button>
+
+=======================================
+4. Two-Way Data Binding (Two-Way → TS ↔ HTML)
+
+Achieved using ngModel.
+
+Syntax:
+
+[(ngModel)]="variableName"
+
+
+Example:
+
+<input [(ngModel)]="username">
+<p>You typed: {{ username }}</p>
+
+
+👉 For ngModel, you must import:
+
+import { FormsModule } from '@angular/forms';
+------------------------------------------------------------------------------------------
+Angular directives
+
+What Are Angular Directives?
+
+Directives are special instructions in Angular that you apply to HTML elements to add behavior to them.
+
+Think of directives as commands that tell Angular:
+✔ how to change HTML structure
+✔ how to apply styles
+✔ how to add logic
+✔ how components behave
+
+In Angular, Components are also directives (with a template).
+
+Types of Angular Directives
+
+Angular has 3 types:
+Component Directives
+Structural Directives
+Attribute Directives
+custom directives
+
+=============================================
+Component Directives (Most common)
+
+Every component in Angular is a directive with a template.
+
+Example:
+@Component({
+  selector: 'app-hello',
+  template: `<h1>Hello Angular!</h1>`
+})
+export class HelloComponent {}
+
+Component = directive + HTML + CSS
+✔ They control a part of the screen (views)
+
+
+
+=============================================
+Structural Directives
+
+These change the DOM structure (add, remove, replace elements).
+
+They always begin with *
+
+Directive	      Use
+*ngIf	           Show/hide elements
+*ngFor	   Loop through items
+*ngSwitch	   Conditional switch
+(typescipt)
+===========================================
+Attribute Directives
+for(css)
+These change the appearance or behavior of elements.
+
+They do NOT add/remove DOM elements.
+
+Directive	Purpose
+ngClass	Add/remove CSS classes
+ngStyle	Apply inline styles
+ngModel	Two-way binding
+Custom attribute directives	Change appearance (like highlight)
+
+----------------------------------------------------------------------------------------
+PIPES 
+pipes : | this is symbol just telling which things want  
+(it is used to convert the data to required format)
+string pipe, currency pipe, data pipe, json pipe, dcustom pipe etc
+ex job="abc" this is in ts
+html {{job}| uppercase} (here we are saying how we want data )
+
+we can also create custom pipe 
+ng genenrate pipe sqr
+
+----------------------------------------------------------------------------------------------
+FORMS 
+
+2 ways   template driven form (validation will do in html page)
+	      reactive driven form (validation will do in ts file)
+
+ng g c forms demp
+ng g c templatedrivenform (html sideworking)
+ng g c reactivedrivenform (type cript side working)
+
+
+--------------------------------------------------------------------------------------------
+Form validation 
+
+Angular Forms is a powerful module in Angular that allows developers to create dynamic, interactive, and validated forms in web applications. Forms are essential for collecting user input, such as registration details, login credentials, or any data submission. Angular provides built-in directives and classes to manage form data, validation, and user interactions efficiently.
+
+There are two main ways to implement forms in Angular:
+
+a) Template-Driven Forms
+
+Form logic is defined mostly in the HTML template.
+
+Uses directives like ngModel, required, minlength, etc.
+
+Simpler to implement, suitable for small forms.
+
+Example:
+
+<form #userForm="ngForm" (ngSubmit)="submitForm(userForm.value)">
+  <input type="text" name="username" ngModel required>
+</form>
+
+============================================
+b) Reactive (Model-Driven) Forms
+
+Form logic is defined in the component TypeScript code.
+
+Uses FormGroup, FormControl, and Validators.
+
+Suitable for large, complex forms.
+
+Provides better scalability and testability.
+
+Example:
+
+this.userForm = new FormGroup({
+  username: new FormControl('', Validators.required)
+});
+
+<form [formGroup]="userForm" (ngSubmit)="submitForm()">
+  <input formControlName="username">
+</form>
+
+============================================
+in simple 
+3. Types of Angular Forms
+
+Angular provides two types of forms:
+
+(Template-Driven Forms)
+
+Easy to use.
+
+Two-way data binding with ngModel.
+Validation done via directives in HTML.
+
+(Reactive Forms)
+
+Form model defined in TypeScript.
+
+More powerful, flexible, and scalable.
+
+Allows dynamic form controls and custom validators.
+
+============================================
+4. Validations in Angular Forms
+
+Angular provides built-in validators to ensure data integrity and correctness:
+
+Built-in Validators
+
+required → ensures a field is not empty.
+
+minLength / maxLength → ensures correct string length.
+
+pattern → checks input against a regex pattern.
+
+email → validates email format.
+
+min / max → validates numerical values.
+
+Custom Validators
+
+Developers can create custom validation logic to meet specific requirements.
+
+Example: password strength, age validation, username availability.
+
+Validation Feedback
+
+Angular provides real-time validation feedback to users via invalid, touched, and dirty states.
+
+========================================
+5. Why Use Angular Forms?
+
+Ease of Data Binding: Connects form controls to model objects easily.
+
+Validation: Built-in validators and custom validators for robust checks.
+
+Reactive Updates: Form values and states are updated automatically.
+
+Scalability: Reactive forms are suitable for complex enterprise applications.
+
+Testability: Easier to write unit tests for form logic and validation.
+
+Dynamic Forms: Can add or remove controls at runtime (Reactive Forms).
+
+------------------------------------------------------------------------------------'
+SERVICES 
+it is used to send or share the data across multiple components 
+(generally we call it is dependency injection)
+
+ng g c servicedemo

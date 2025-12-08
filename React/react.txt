@@ -1,0 +1,257 @@
+JQuery is a third party external js librry which contains lot of pre defined function which internally connected with each otheres which help read, write update dom contents
+
+when we move from one page to another page while dom or whole html page loaded once again in browser memory
+
+SPA: Single page application concept
+In spa rather than loading whole page we load only part of the web page
+
+Js provided lot of pre defined library and framework which help to read, write and update dom effectively 
+
+Angular Js
+ANgular framework (both are different) : it follows mvc in frontend side
+
+React Js :it is open source it is a light weighted third party open source library provided by facebook , it is based upon spa concept.
+React only forcus on view in MVC. 
+It provide virtual DOM 
+
+Component is used to control the view or part of the web page
+
+In react js we can create the component using 
+!. Arrow style
+2. function style
+3. class style 
+
+React j swe can do using 
+1. java script
+2. type script
+
+
+NOde software   3 ways to create 
+--------------------------------------------------------------------------
+
+npm(node package manager) (this process is legacy )
+1. npm install creat-react-app -g
+create react-app-demo-app (it create react js project usuing javascript)
+
+2. cddemo-app
+3. npm start 
+
+by default react ks rn on 3000 port 
+---------------------------------------------------------------------------------------------
+
+npx(node package extension)
+npx create-react-app-demo-app --template typescript (latest verion project will be created )
+
+2. cddemo-app
+3. npm start 
+
+by default react ks rn on 3000 port 
+
+-------------------------------------------------------------------------------------
+
+vite framework to create the react js project 
+vite are also known as veet is a next generation for fronent applications (it is a modern framework to create react project)
+it is not a framework it is a development tool use to create build modern web application. 
+
+npm create vite@latest my-react-app(app name)
+enter y
+react
+typescript 
+use roll down vite : no
+yes
+
+to run (npm run dev)
+
+In react every component return jsx (kava script and sml or extension). means we can return dynamic html content or dom contents.
+dom can be dynamic
+using component we are creating user defined tag. wherever we use that tag the component retuern dom content it can be static or dynamic
+----------------------------------------------------------------------------------------
+rough
+app.tsx
+clear all and wirte a function 
+
+<> </> theese are react fragments 
+The tags <> </> are called React Fragments.
+
+What they are
+
+In React, a Fragment lets you wrap multiple elements without adding an extra DOM node like <div>.
+
+Example
+<>
+  <h1>Hello</h1>
+  <p>World</p>
+</>
+
+
+
+This is the short syntax for:
+
+In React js we can create component using 3 ways 
+1.function style (preffered)
+2.arrow style
+3. class style (not preferred) (inheritance have to use extends react.compnent)
+
+wite a function
+last export default or export {name } like this we can do
+in import side also same {name, id, ..whatever} 
+
+like this also we can write in single line
+export let AnotherArrowComponent = ()=><div>Another Arrow Component</div>
+
+last import in app.tsx like this  
+import {AnotherArrowComponent, ArrowComponent} from "./ArrowComponent";
+import ClassComponent from "./ClassComponent";
+import FunctionComponent,{id,name,Hello} from "./FunctionComponent";
+
+   <FunctionComponent></FunctionComponent>
+      <ArrowComponent></ArrowComponent>
+      <AnotherArrowComponent></AnotherArrowComponent>
+      <ClassComponent></ClassComponent>
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+example
+app.tsx(this is main)
+
+import {AnotherArrowComponent, ArrowComponent} from "./ArrowComponent";
+import ClassComponent from "./ClassComponent";
+import FunctionComponent,{id,name,Hello} from "./FunctionComponent";
+
+function App() {
+
+
+  return(
+    <div>
+      <h3>Types of Component</h3>
+      <p>Id is {id} name is {name} call function is {Hello()}</p>
+      <FunctionComponent></FunctionComponent>
+      <ArrowComponent></ArrowComponent>
+      <AnotherArrowComponent></AnotherArrowComponent>
+      <ClassComponent></ClassComponent>
+    </div>
+  )
+}
+
+export default App;
+=========================================
+functoncomponent.tsx
+
+function FunctionComponent() {
+
+    return(
+        <div>
+            <h3>Function style component</h3>
+        </div>
+    )
+}
+function Hello():string {
+    return "Welcome";
+}
+let id:number = 100;
+let name:string= "Ravi"
+export {id,name,Hello}
+export default FunctionComponent;
+===============================================
+arrowcomponet.tsx
+
+let ArrowComponent = ()=><div>Arrow Component</div>
+
+export let AnotherArrowComponent = ()=><div>Another Arrow Component</div>
+
+export {ArrowComponent};
+
+=========================================================
+classcomponent.tsx (inheritance extends react.Compnent) mostly not prefered
+
+import react from 'react';
+
+class ClassComponent extends react.Component {
+
+
+    render(): react.ReactNode {
+        return <div>This is Class component</div>
+    }
+}
+
+export default ClassComponent;
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+these components divided into 2 types
+1.state less component : every component has own state (using this because react + hookstyle)
+2.state full component
+
+old version react js class style component is known as state full component
+
+Function style component we were calling as state less component
+But react with hook, we can make function style component also state full components.
+
+In react component contains two type variables
+1. state variable (loca variable) it is use to describe the behavior of component .state variable also known as mutable variable we can change the value. using setstate (if class style component) using hook if function style components. state variable is local to that components.
+
+2.props variable: pops s use to pass the value from one component to another. Sharing the data between one component to another component base upon their relationship. prope is known as immutable data
+
+===============================================================
+react hooks: react js introduce hook concept hook is like a specific function which provide extra functionality to react components. react hook can we use in functional components
+Not in class compnnents
+All hooks start the prefix use foolowed by hook name
+
+1. useState():this hook mainly help us to create state variable in function component. The return type of this hook 1st index is variableValue and 2nd parameter function
+Using 2nd parameter we can do changes on state variables 
+The retun type is array type 
+
+State variable can be 
+1.primitive types: number,string, Boolean
+2.array types: of number, string
+3. object types: of employee, customr, product etc
+4. array of object types  
+
+react js even value must be jsx or tsx it ask callback function
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+REACT events : it provide synteicevent s a predefined api part of typescript which wrap java script dom events
+it provided a consistence in all device and all browser. these event handle inside virtual dom
+
+Mouse event  React.MouseEvent
+keyboard event React.KeyboardEvent
+form event ...
+change event ....
+
+------------------------------to create new component project----------------------------------------------------------------
+D:\react>npm create vite@latest types-of-componet
+
+> npx
+> create-vite types-of-componet
+
+|
+o  Select a framework:
+|  React
+|
+o  Select a variant:
+|  TypeScript
+|
+o  Use rolldown-vite (Experimental)?:
+|  No
+|
+o  Install with npm and start now?
+|  No
+|
+o  Scaffolding project in D:\react\types-of-componet...
+|
+—  Done. Now run:
+
+  cd types-of-componet
+  npm install
+  npm run dev
+-----------------------------------------------------------------------------------------------
+
+( go babel  transpiler we can find )
+
+
+
+
+where in anguar only class style 

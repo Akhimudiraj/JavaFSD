@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <!-- ======= Simple Form (HTML only) ======= -->
+  <h2>Contact / Registration Form</h2>
+  <form action="#" method="post">
+    <!-- Text inputs -->
+    <label for="fullname">Full name:</label><br />
+    <input type="text" id="fullname" name="fullname" required /><br /><br />
+
+    <label for="email">Email:</label><br />
+    <input type="email" id="email" name="email" required /><br /><br />
+
+    <!-- Radio buttons -->
+    <fieldset>
+      <legend>Gender</legend>
+      <input type="radio" id="gender_m" name="gender" value="male" />
+      <label for="gender_m">Male</label><br />
+      <input type="radio" id="gender_f" name="gender" value="female" />
+      <label for="gender_f">Female</label><br />
+      <input type="radio" id="gender_o" name="gender" value="other" />
+      <label for="gender_o">Other</label>
+    </fieldset>
+    <br />
+
+    <!-- Checkboxes -->
+    <fieldset>
+      <legend>Interests</legend>
+      <input type="checkbox" id="interest_dev" name="interests" value="development" />
+      <label for="interest_dev">Development</label><br />
+      <input type="checkbox" id="interest_ds" name="interests" value="data" />
+      <label for="interest_ds">Data</label><br />
+      <input type="checkbox" id="interest_ui" name="interests" value="ui" />
+      <label for="interest_ui">UI/UX</label>
+    </fieldset>
+    <br />
+
+    <!-- Select dropdown -->
+    <label for="country">Country:</label><br />
+    <select id="country" name="country">
+      <option value="">--Select--</option>
+      <option value="in">India</option>
+      <option value="us">United States</option>
+      <option value="uk">United Kingdom</option>
+      <option value="au">Australia</option>
+    </select>
+    <br /><br />
+
+    <!-- Textarea -->
+    <label for="message">Message:</label><br />
+    <textarea id="message" name="message" rows="4" cols="40" placeholder="Write a short message..."></textarea>
+    <br /><br />
+
+    <!-- Submit/reset -->
+    <input type="submit" value="Submit" />
+    <input type="reset" value="Reset" />
+  </form>
+
+  <hr />
+
+  <!-- ======= Table (HTML only) ======= -->
+  <h2>Sample Data Table</h2>
+  <table border="1" cellpadding="6" cellspacing="0">
+    <caption>Employee Directory</caption>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Role</th>
+        <th>Location</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>101</td>
+        <td>Asha Kumar</td>
+        <td>Software Engineer</td>
+        <td>Bengaluru</td>
+      </tr>
+      <tr>
+        <td>102</td>
+        <td>Rahul Verma</td>
+        <td>Data Analyst</td>
+        <td>Hyderabad</td>
+      </tr>
+      <tr>
+        <td>103</td>
+        <td>Meera N.</td>
+        <td>QA Engineer</td>
+        <td>Chennai</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="4">Total employees: 3</td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <hr />
+
+  <!-- ======= Lists (HTML only) ======= -->
+  <h2>Lists</h2>
+
+  <!-- Unordered list -->
+  <h3>Unordered List (bullets)</h3>
+  <ul>
+    <li>Frontend development</li>
+    <li>Backend development</li>
+    <li>Data engineering</li>
+  </ul>
+
+  <!-- Ordered list -->
+  <h3>Ordered List (steps)</h3>
+  <ol>
+    <li>Plan the task</li>
+    <li>Implement the solution</li>
+    <li>Test and deploy</li>
+  </ol>
+
+
+     
+
+</body>
+</html>

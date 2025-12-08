@@ -1,0 +1,24 @@
+create class >> getter setter > create xml file >select xmlfile --create name.xml >> paste sirs xml beans
+paste this ----
+
+<beans xmlns = "http://www.springframework.org/schema/beans"
+xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+ 
+ 
+ 
+ 
+  </beans>
+2
+create <bean >
+<property name> and do id (passing for setter)
+
+3
+create main file (to write logic)
+go to maven resporitory>spring context >check popularly use or latest version i.e pom.xml
+paste in dependincies
+classpathxml paste samexml name only
+
+
+

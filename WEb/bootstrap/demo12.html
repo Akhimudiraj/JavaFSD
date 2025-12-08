@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    
+
+
+    <p>A popover is a small message box that appears when you click or hover on an element.
+It looks like a tooltip but can contain more text, HTML, and titles.
+
+Example:
+When you click a button → a small box pops up with extra information.</p>
+
+<button type="button" class="btn btn-info" data-toggle="popover" title="Popover Title" data-content="This is the popover content. writing anything">
+  Click me
+</button>
+
+
+
+
+
+<script>
+  $(document).ready(function(){
+    $('[data-toggle="popover"]').popover();   
+  });
+</script>
+</body>
+</html>

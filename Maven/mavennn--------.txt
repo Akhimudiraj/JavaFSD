@@ -1,0 +1,161 @@
+mavennn--------
+
+https://www.geeksforgeeks.org/advance-java/maven-tutorial/
+
+maven lifecycle
+https://www.tutorialspoint.com/maven/maven_build_life_cycle.htm
+
+
+🧩 1. What Is Maven and Why Use It?
+
+Maven is a build automation and project management tool used primarily for Java projects.
+It helps developers:
+
+Build projects (compile, test, package)
+
+Manage dependencies (external libraries)
+
+Standardize project structures
+
+Automate repetitive build tasks
+
+✅ Why Use Maven?
+
+No manual JAR downloads: Maven automatically downloads required libraries.
+
+Dependency version control: Avoids conflicts between different versions.
+
+Consistent builds: Works the same way on any machine.
+
+Integration with IDEs: Works smoothly with Eclipse, IntelliJ, VS Code, etc.
+
+Automated build process: From source → JAR/WAR → deploy.
+
+⚙️ 2. Maven Lifecycle
+
+Maven defines a build lifecycle, which is a sequence of steps (called phases) to build and manage a project.
+
+🔹 Common Build Phases
+Phase	Description
+clean	Removes previously compiled files (target/ folder).
+compile	Compiles the source code in src/main/java.
+test	Runs unit tests (from src/test/java) using frameworks like JUnit.
+package	Packages the compiled code into a JAR or WAR file (based on project type).
+install	Installs the packaged file into your local Maven repository for reuse.
+deploy	Uploads the final package to a remote repository (for sharing).
+
+👉 Example commands:
+
+mvn clean
+mvn compile
+mvn test
+mvn package
+
+📦 3. Dependency Management with pom.xml
+
+The POM (Project Object Model) file (pom.xml) is the heart of a Maven project.
+It defines:
+
+Project metadata (name, version, etc.)
+
+Dependencies (external libraries)
+
+Plugins (extra build functionality)
+
+🧾 Example:
+<project>
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.example</groupId>
+  <artifactId>myapp</artifactId>
+  <version>1.0.0</version>
+
+  <dependencies>
+    <!-- Example: Add JUnit for testing -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.13.2</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+</project>
+
+
+✅ Maven automatically downloads all dependencies from its repositories.
+
+🗂️ 4. Repository Types
+
+Maven uses repositories to store and fetch dependencies.
+
+Type	Description	Location
+Local Repository	Stored on your computer after Maven downloads dependencies the first time.	~/.m2/repository
+Central Repository	Default public repo where Maven downloads libraries from.	https://repo.maven.apache.org/maven2
+
+Remote/Private Repository	Optional — used by organizations to host internal or custom artifacts.	e.g., company servers or Nexus/Artifactory
+🏗️ 5. Project Structure & Packaging
+
+Maven enforces a standard directory structure so all projects look the same:
+
+myproject/
+ ├── src/
+ │   ├── main/
+ │   │   ├── java/       # Source code
+ │   │   └── resources/  # Config files (properties, XML, etc.)
+ │   └── test/
+ │       ├── java/       # Unit test code
+ │       └── resources/
+ ├── target/             # Compiled files, JAR/WAR outputs
+ └── pom.xml             # Project Object Model file
+
+🧱 Packaging Types
+
+In the POM file:
+
+<packaging>jar</packaging>
+
+
+You can specify:
+
+jar → For desktop or library apps
+
+war → For web applications
+
+pom → For parent or aggregator projects
+
+📚 6. Adding External Dependencies (e.g., JUnit, Gson)
+
+You add dependencies inside the <dependencies> tag in pom.xml.
+
+🧪 Example 1: Add JUnit (for testing)
+<dependency>
+  <groupId>junit</groupId>
+  <artifactId>junit</artifactId>
+  <version>4.13.2</version>
+  <scope>test</scope>
+</dependency>
+
+🧾 Example 2: Add Gson (for JSON handling)
+<dependency>
+  <groupId>com.google.code.gson</groupId>
+  <artifactId>gson</artifactId>
+  <version>2.11.0</version>
+</dependency>
+
+
+Maven will automatically:
+
+Download these libraries from the central repository.
+
+Store them in your local repository (.m2 folder).
+
+Add them to your project’s classpath.
+
+🧠 Summary Table
+Concept	Description
+Maven	Build automation & dependency management tool
+POM	Defines project info, dependencies, plugins
+Lifecycle Phases	clean → compile → test → package → install → deploy
+Repositories	Local (~/.m2), Central (online), Remote (custom)
+Structure	Standard folders for code, tests, and resources
+Dependency Example	JUnit for testing, Gson for JSON

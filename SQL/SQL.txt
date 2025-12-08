@@ -1,0 +1,743 @@
+SQL :
+
+	NO
+	Basics
+	Yes
+				B A
+					XL : excel : Lost ? 
+SQL ?
+	What ? 
+	Why ? 
+	Where  ? 
+	When ? 
+	What if not SQL ...!
+
+				
+I Have a company : 
+		10 emp 
+		100 
+		1000 employees 
+
+		ID 	Name 	Age 	Salary 	Designation 	PAN Phone Address Pin 
+
+		1
+		2
+		3
+		4
+		5
+		.
+		.
+		10000+
+
+		  salary  < 50000 ; 
+
+		Id , name , salary 
+			< 50000 ;
+
+SQL : 
+		it will east to sort , Search , Join , Find , Delete , Modify 
+		it will also allow us to take back up 
+
+		it easy to work with muitle table : easy to join 
+		There are so many ready function are avalaiabe for find or insert ot delete etc...!
+		+ We can store huge no data  ( img , Vedios , audios , Text , pdf , etc...!)
+	
+		Amezon : 
+		Facebook 
+			BA  : 
+				2010 : FB : 100000+		: 1GB 
+				2015 : FB  : 5- 10 ,: 000000+ 	: 100GB
+				2020 :  double or Tripple 	: 100000GB
+				2024  : xyz 			: 100000000GB
+				2030.......!? 			: ..........?
+				
+
+				Incr ...!
+				
+				FB :
+					Daily : Cus : keep adding the data : Delete...?
+					---->
+					------->
+					------------>
+					------------------->
+					------------------------------->
+					-------------------------------------------->
+									Huge Data  	 
+											SQL : DBMS 
+								(Data base Management System)
+			SQL : Structured Query lang
+
+		Data bases: 
+				MYSQL  : MYSQL 
+						
+				
+
+		MYSQL : Data Base   : Install 
+					
+		Cloud :
+		Local Machin
+=====================================================================================================
+create database BusinessAnalyst ;
+use BusinessAnalyst ;
+Create Table Employee(
+	EID  smallint,
+    EName varchar (15), 
+    EAge smallint,
+    ESalary mediumint,
+    EDesignation varchar(15)
+);
+    
+ Insert into Employee values (100 , 'Thanesh' , 30 , 50000, 'Developer' );
+ Insert into Employee values (200 , 'Naresh' , 20 , 60000, 'BA' );
+ Insert into Employee values (300 , 'Hardik' , 25 , 750000, 'Manager' );
+ select * from Employee;
+ 
+Select Eid from employee;
+select Eid, Ename from employee;
+select Eid, Ename , eage , esalary from employee;
+select Eid, Ename , eage , esalary , edesignation from employee;
+select * from employee;
+======================================================================= TASK (10 minuts ) =============
+	i want you to create db as  MyProducts
+
+		Table : Mobiles
+				pid 		Pname 		pprice		Pdescription
+
+				1		MI		200000		GOod
+				2		Nokia		300000		okay
+				3		iPhone		900000		best
+				4 		Oppo		15000		Okay
+				100
+				1000 
+				100000 : Small int 
+
+
+
+=====================================================================
+
+
+
+
+	Types of SQL cmds 
+
+
+1 ) DDL : Data Definition Language 
+					: Dr Cat 
+					: Drop , Rename , Create , Alter , Truncate 	
+
+2 ) DML : Data Manipulation language 
+					: UID 
+					: Update , Insert , Delete 
+
+3 ) DRL  : Data Retrieval language 
+					: Select 
+
+
+4 ) TCL : transaction Control language 
+					: Commit , Rollback 
+
+5 ) DCL  : Data Control language 
+					: Grant , Revoke 
+
+
+-- Create a Database 
+        -- create  a table 
+        -- inseert 
+        -- select 
+        -- update 
+        -- delete 
+        -- truncate 
+        -- drop table
+	-- Alter 
+	-- Rename 
+
+   
+-- Interview Question 
+    -- drop : it will delete all record + even table also : 
+    -- truncate : it will delete al recodes  but not table 
+    -- delete it is used to remove the particular . specific record from the table 
+    
+
+use businessanalyst;
+create table Employee
+(
+	eid int,
+    	Ename varchar(10), 
+    	Eage smallint,
+    	esalary mediumint,
+   	EDesignation varchar(10)
+);
+ Insert into Employee values (100 , 'Thanesh' , 30 , 50000, 'Developer' );
+ Insert into Employee values (200 , 'Naresh' , 20 , 60000, 'BA' );
+ Insert into Employee values (300 , 'Hardik' , 25 , 750000, 'Manager' );
+ insert into employee values (400 , 'Angel',25,50000,'BA');
+ insert into employee values (500 , 'Fathima',26,60000,'Software');
+ insert into employee values (600 , 'Ishani',35,80000,'BA');
+ insert into employee values (700 , 'Mangesh',22,90000,'Manager');
+ insert into employee values (800 , 'Konia',30,90000,'CEO');
+ select * from employee ;
+ 
+	select * from employee where EDesignation = 'BA';
+	Select * from Employee where edesignation = 'BA' and eage > 30 ;
+
+update employee set esalary = 60000 where EID=100; 
+update employee set esalary = 95000 where eid = 700;
+select * from employee ;
+update employee set eage = 23 , esalary = 98500 where eid= 700 ;
+  
+  i want to  update employee salary  to 75000 whose designation BA ;
+  i want to  update employee salary  to 75000 and designation as Sr BA  whose designation BA ;
+  
+  Select * from employee ;
+   select * from employee where edesignation ='BA';
+   delete from employee where eid = 200 ;
+   delete from employee where edesignation = 'BA';
+   delete from employee where edesignation ='Manager' and esalary > 80000;
+	select * from employee ;
+		   
+
+
+     
+     truncate table employee ;
+	select * from employee ;
+    
+    drop table employee ;
+    
+-- Interview Question 
+    -- drop : it will delete all record + even table also : 
+    -- truncate : it will delete al recods  but not table 
+    -- delete it is used to remove the perticuler . specific record from the table 
+    
+	
+-- Create a Database 
+        -- create  a table 
+        -- inseert 
+        -- select 
+        -- update 
+        -- delete 
+        -- truncate 
+        -- drop table 
+        -- Alter 
+		-- Add column 
+                -- Drop the column 
+                -- Rename the column 
+		        
+        			
+				        
+        
+create table Employee
+(
+	eid int,
+	Ename varchar(10),
+	 Eage smallint,
+	esalary mediumint,
+	EDesignation varchar(10)
+); 
+
+		table is already there
+
+	Alter table Employee Add Phone int ;
+	select * from employee ;
+	
+	Alter Table employee add (PAN varchar(10), PIN int);
+	
+		once after  u alter the table : select and check table 
+		update the record (no insert , you have to update )
+
+	Alter table Employee Drop  PIN ;
+			select * from employee ;
+	Alter table Employee drop Phone;
+		select * from employee ;
+
+	Alter table employee Rename column  EID  to  id ;
+	
+	Alter table employee rename column Eage to age ;
+
+	select * from employee ;
+
+
+Select * from employee ;
+rename  table employee to emp ;
+select * from emp ;
+
+============================================
+int only number 
+varchar can be a number or char
+date
+============================================
+-- Create a Database 
+        -- create  a table 
+        -- insert 
+        -- select 
+        -- update 
+        -- delete 
+        -- truncate 
+        -- drop table 
+        -- Alter 
+		-- Add column 
+                -- Drop the column 
+                -- Rename the column 
+		        
+constraints	
+	Primary key :
+			 my db will not allow the duplicate key or ids 
+			+ we can not insert the null values ( we must have to insert some value which not of duplicate )
+        Check 		:it will check brfoer insert the records 
+        Default 	: it will assign the default values as what ever we set as default 
+        Unique		: i will have a difff record but can be null 
+        Not null 	: the col should not be empty
+        Foreign key 	: 
+        
+
+
+
+Primary 			Unique 
+
+
+must be diff record 		must be diff record 
+but can not be null 		but can be  null 
+
+
+in a table we can use 
+only once per table (PK )	can be multiple time 
+
+===============================================================================
+
+SELECT * FROM businessanalyst.emp;
+
+use businessanalyst;
+
+create table Employee
+(
+	id int primary key,
+   	Ename varchar(10) ,
+    	eage int , 
+    	esalary int , 
+    	edesig varchar(10),
+    	PAN varchar(10)
+);
+
+insert into employee value(100, 'Thanesh',30 ,50000 ,'Developer' ,'Tha123');
+select * from employee;
+insert into employee value(200, 'Ramesh',35 ,60000 ,'BA' ,'Ram123');
+insert into employee value('400', 'Rakesh',35 ,60000 ,'BA' ,'Ram123');
+
+insert into employee value('500', '',35 ,60000 ,'BA' ,'XYZ345');
+insert into employee(id,eage ,esalary ,edesig ,pan) value('600',35 ,60000 ,'BA' ,'XYZ307745');
+
+
+drop table Employee ;
+
+create table Employee
+(
+	id int primary key,
+    Ename varchar(10) not null  ,
+    eage int , 
+    esalary int , 
+    edesig varchar(10),
+    PAN varchar(10)
+);
+
+
+insert into employee value(100, 'Thanesh',30 ,50000 ,'Developer' ,'Tha123');
+select * from employee;
+insert into employee value(200, 'Ramesh',35 ,60000 ,'BA' ,'Ram123');
+insert into employee value('400', 'Rakesh',35 ,60000 ,'BA' ,'Ram123');
+
+insert into employee(id,eage ,esalary ,edesig ,pan) value('600',35 ,60000 ,'BA' ,'XYZ307745'); -- we cant skip the name ;
+
+
+drop table employee ;
+create table Employee
+(
+	id int primary key,
+    Ename varchar(10) not null  ,
+    eage int check (eage < 60), 
+    esalary int  check (esalary > 25000), 
+    edesig varchar(10),
+    PAN varchar(10)
+);
+
+insert into employee value(400, 'Thanesh',61 ,50000 ,'Developer' ,'Tha123');
+select * from employee;
+insert into employee value(200, 'Ramesh',55 ,25001 ,'BA' ,'Ram123');
+
+drop table employee ;
+
+create table Employee
+(
+	id int primary key,
+    Ename varchar(10) not null  ,
+    eage int check (eage < 60), 
+    esalary int  check (esalary > 25000), 
+    edesig varchar(10),
+    PAN varchar(10) unique
+);
+
+
+insert into employee value(100, 'Thanesh',30 ,50000 ,'Developer' ,'Tha123');
+select * from employee;
+insert into employee value(200, 'Ramesh',35 ,60000 ,'BA' ,'Ram123');
+insert into employee value('400', 'Rakesh',35 ,60000 ,'BA' ,'Ram124');
+
+
+insert into employee(id,ename ,eage ,esalary ,edesig) value('600','ABI',35 ,60000 ,'BA'); -- we cant skip the name ;
+
+
+drop table employee ; 
+
+create table Employee
+(
+	id int primary key,
+    Ename varchar(10) not null  ,
+    eage int check (eage < 60), 
+    esalary int  check (esalary > 25000), 
+    edesig varchar(10) default 'Jn Enginer',
+    PAN varchar(10) unique
+);
+insert into employee value(100, 'Thanesh',30 ,50000 ,'Developer' ,'Tha123');
+select * from employee;
+insert into employee value(200, 'Ramesh',35 ,60000 ,'BA' ,'Ram123');
+insert into employee value('400', 'Rakesh',35 ,60000 ,'BA' ,'Ram124');
+insert into employee(id,ename ,eage ,esalary ,pan) value('600','ABI',35 ,60000 ,'ASH123'); -- we cant skip the name ;
+select * from employee;
+
+Constrients 
+	PK 	Unique	Not null	Check  Default 
+drop table employee;
+
+create table Employee
+(
+	id int primary key,
+    Ename varchar(10) not null  ,
+    eage int check (eage < 60), 
+    esalary int  check (esalary > 25000), 
+    edesig varchar(10) default 'Jn Enginer',
+    PAN varchar(10) unique ,
+);
+insert into employee value(100, 'Thanesh',30 ,50000 ,'Developer' ,'Tha123');
+insert into employee value(200, 'Ramesh',35 ,60000 ,'BA' ,'Ram123');
+insert into employee(id,eage ,esalary ,edesig ,pan) value('600',35 ,60000 ,'BA' ,'XYZ307745'); -- we cant skip the name  we much have to enter ;
+insert into employee value('500', '',35 ,60000 ,'BA' ,'Ram123'); // it allow  bcz we are entering null manually 
+insert into employee value('600', 'Rakesh',65 ,60000 ,'BA' ,'Ram123'); // must be less the 60 
+insert into employee value('700', 'Rakesh',55 ,25001 ,'BA' ,'Ram123'); // must be less the 25000 
+insert into employee value('400', 'Rakesh',35 ,60000 ,'BA' ,'Ram123'); // same pan there so not possible , change the pan 
+insert into employee value(700, 'Ramesh',35 ,60000 ,'BA' ,'Ram163');
+insert into employee value('800', 'Rakesh',35 ,60000 ,'BA' ,'Ram524');
+
+insert into employee value('888', 'MANU',35 ,60000 ,'BA' ,'');
+insert into employee(id,ename ,eage ,esalary ,pan) value('900','ABI',35 ,60000 ,'ASH123'); -- we cant skip the name ;
+select * from employee;
+drop table employee;
+
+				based on employee table 
+			Operators : 
+	order by 
+			ASC 
+			DESC 
+	Like 
+	between 
+	Distinct
+	and ,
+	or ,
+	not ,
+	in,
+	null
+	AS ,: alias names 
+	having 
+	group by 
+	having 	
+
+
+
+
+
+
+
+	Joins 
+		inner join
+		right join 
+		left join  
+		full join
+
+
+
+--------------------------------------------------
+drop table table2;
+
+CREATE TABLE table1 (	id INT, name VARCHAR(50) );
+
+INSERT INTO table1 (id, name) VALUES
+(1, 'Alice'),
+(2, 'Bob'),
+(3, 'Charlie');
+
+CREATE TABLE table2 (id INT,name VARCHAR(50) );
+
+INSERT INTO table2 (id, name) VALUES
+(3, 'Charlie'),
+(4, 'David'),
+(5, 'Eve');
+
+SELECT id, name FROM table1
+UNION
+SELECT id, name FROM table2;
+
+
+
+CREATE TABLE orders (
+    order_id INT PRIMARY KEY,
+    customer_id INT,
+    order_date DATE,
+    amount DECIMAL(10, 2)
+);
+INSERT INTO orders (order_id, customer_id, order_date, amount)
+VALUES
+    (1, 101, '2024-09-28', 150.00),
+    (2, 102, '2024-09-28', 200.00),
+    (3, 101, '2024-09-29', 100.00),
+    (4, 103, '2024-09-29', 300.00),
+    (5, 102, '2024-09-30', 250.00);
+    
+Select * from Orders;
+select order_id , Customer_id  from orders ;
+select order_id  as OID , Customer_id as CID from orders ;
+Select * from Orders where order_date > '2024-09-28';
+---------------------------
+SELECT customer_id, SUM(amount) AS total_amount
+FROM orders
+GROUP BY customer_id;
+-----------------------
+SELECT customer_id, SUM(amount) AS total_amount
+FROM orders
+GROUP BY customer_id
+HAVING SUM(amount) > 400;
+											
+ ===============
+
+
+use businessanalyst;
+
+SELECT * FROM emp_record_table;
+SELECT * FROM emp_record_table order by salary asc;
+SELECT * FROM emp_record_table order by salary desc;
+SELECT * FROM emp_record_table order by salary desc limit 3;
+
+Funcations : number , Single row function , aggreation 
+
+select max(salary) from emp_record_table ;
+select min(salary) from emp_record_table ;
+select count(Emp_id) from emp_record_table; -- 19 employees
+select sum(salary) from emp_record_table ; -- sum = 141800 
+select avg(salary) from emp_record_table ; -- 7463.1579
+
+
+Aggreation FUnction : max , min avg , sum, count , 
+
+Singe row function...!Upper lower
+    flore : 55558 : down 
+    ceil :  55559 :ceiling fan : top , next val 
+String functions     
+    Select concat('Thanesh', 'Kumar' ) as Name;
+    select replace('Rakesh' , 'k','J') as Name ;
+    select Right('Thanesh',3) as name ;
+    select left('ThaneshWara',7) as name ;
+    select reverse('Thanesh') as Name ;
+    select length('Thaneshwara') as NAme ;
+    select format(123456789 ,'###-###-###') as AMOUNT;
+Date Functions :    
+	Select now();
+    select current_date();
+    select current_time();
+    select current_timestamp();
+DATE	format YYYY-MM-DD
+DATETIME 	format: YYYY-MM-DD HH:MI: SS
+TIMESTAMP 	format: YYYY-MM-DD HH:MI: SS
+YEAR 	format YYYY or YY
+====================================================================
+
+			Data  base Relations we have 
+
+One to One 
+
+	1 nation 1 PM 
+	1 emp 1 ID 
+	1 emp 1 pan 
+ 
+One to Many 
+	1 nation Many CM 
+	1 parent many Childers 
+
+many TO One 
+	many products can buy one Customer	
+	Many Students One Teacher
+	many Employes one HR 
+	
+many to Many 
+	many Books can take many students 
+	Many customers buy many products
+
+
+    
+    
+ER Diagrams 
+
+	Employee management 
+	Hotel mamagememt 
+	Flight 
+	COllege admin management 
+	Swiggy / Zamoto /
+	Phone pay / google pay / Paytm 
+	
+	
+   
+    
+    
+
+    
+    
+
+
+
+============================
+
+
+=====================================================
+				TRIGGER IN MYSQL 
+CREATE TABLE Student
+(  
+	RollNo INT NOT NULL PRIMARY KEY,  
+	FirstName Varchar (10),  
+	Bio INT,  
+	Physics INT,   
+	Chemistry INT,  
+	Maths INT,  
+
+	TotalMarks INT,  
+	Percentage int
+);
+
+CREATE TRIGGER Student_Marks 
+BEFORE INSERT  
+ON  
+Student
+FOR EACH ROW  
+SET
+new.TotalMarks = new.Bio+ new.Physics + new.Chemistry + new.Maths, 
+new.Percentage = ( new.TotalMarks / 400) * 100; 
+
+insert into student values(333,'Rahdu',66,77,88,55,0,0);
+insert into student values(444,'Rama',56,47,88,65,0,0);
+
+Select * from student ;	
+
+
+
+
+
+
+
+
+				
+========================================================
+
+
+==============PLSQL=================================================
+
+DELIMITER //
+create procedure orderedSalary()
+begin 
+select * from Customers order by salary ;
+end //
+DELIMITER ;
+
+
+
+DELIMITER //
+create procedure greaterthensalary()
+begin 
+select * from Customers where salary > 55000 ;
+end //
+DELIMITER ;
+
+
+
+call getAllCustomers();
+call orderedSalary();
+call greaterthensalary();
+
+
+DELIMITER //
+CREATE PROCEDURE procedure_name(parameter1 datatype, parameter2 datatype, ...)
+BEGIN
+   -- SQL statements to be executed
+END
+DELIMITER ;
+
+
+======================================
+
+
+		working with Date , Data Type 
+		Decimal
+		As : alias name 
+		Having 
+		Group by 
+		Sum 
+		Union 
+		Stored procedure 
+		Triggers 
+	
+
+		Functions 
+				String functions 
+				Date functions 
+				number
+				Single row
+					upper 
+					lower 
+					title 
+				Aggreation 
+					sum 
+					min
+					max 
+					avg
+					count 
+	
+			
+=======================================================================================================
+    
+    
+    
+    
+    
+    
+
+
+
+		 
+use BA;
+
+CREATE TABLE Employees (
+    EmployeeID INT PRIMARY KEY,
+    Name VARCHAR(50),
+    Department VARCHAR(50),
+    Salary DECIMAL(10, 2)
+);
+
+
+INSERT INTO Employees (EmployeeID, Name, Department, Salary)
+VALUES (1, 'John Doe', 'HR', 50000),
+       (2, 'Jane Smith', 'IT', 60000),
+       (3, 'Sam Brown', 'Finance', 55000);
+
+
+SELECT * FROM Employees WHERE Department = 'IT';
+
+CREATE INDEX idx_department ON Employees (Department);
+
+SELECT * FROM Employees WHERE Department = 'IT';
+
+Summary
+Without an Index: The database scans all rows.
+With an Index: The database can quickly locate rows, improving query performance.

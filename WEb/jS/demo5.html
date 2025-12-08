@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+    function abc() {
+        fn = document.getElementById('fname').value;
+        ln = document.getElementById('lname').value;
+        fullname = fn + " : " + ln;
+        document.getElementById('full').value = fullname;
+    }
+
+    function xyz() {
+        document.getElementById('fname').style.backgroundColor = "lightblue";
+    }
+</script>
+</head>
+
+<body>
+
+<marquee onmouseover="stop()" >
+    <h1> Welcome to JAVA SCRIPT </h1>
+</marquee>
+
+<div style="text-align: center;">
+    First NAME : <input type="text" id="fname" onblur="xyz()"><br><br>
+
+    LAST NAME : <input type="text" id="lname"><br><br>
+
+    Full Name : <input type="text" id="full" onfocus="abc()"><br><br>
+
+    <input type="submit" value="CLICK" onclick="abc()"><br><br>
+
+    <input type="submit" value="Double CLICK" ondblclick="abc()">
+</div>
+
+</body>
+</html>

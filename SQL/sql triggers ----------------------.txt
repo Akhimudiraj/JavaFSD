@@ -1,0 +1,29 @@
+sql triggers --------------------------------------------
+
+create table orders ( order_id int primary key auto_increment, product_name varchar(40), qunatity int, order_date timestamp default current_timestamp,
+last_modified timestamp default current_timestamp on update current_timestamp);
+ 
+select * from orders;
+ 
+DELIMITER //
+Create trigger lst_modified 
+before update on orders for each row 
+BEGIN 
+SET new.last_modified = cuurent_timestamp;
+END//
+DELIMITER ;
+ 
+ 
+DELIMITER //
+Create procedure insertOrders(
+  in p_product_name varchar(20),
+  in p_quanity int)
+BEGIN 
+   insert into orders (product_name , qunatity ) values (p_product_name , p_quanity);
+END//
+DELIMITER ;
+ 
+ 
+Call insertOrders('mobile',1);
+Call insertOrders('laptop',2);
+Call insertOrders('mobile',10);

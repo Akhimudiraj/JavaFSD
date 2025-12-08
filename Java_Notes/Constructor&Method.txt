@@ -1,0 +1,75 @@
+https://hindublogwritings.wordpress.com/2022/11/12/constructor-in-java/
+
+Constructor in Java
+November 12th, 2022
+The purpose of Constructor is just to assign values to the instance variable at the time of object creation.
+Constructor gets invoked at the time of object creation.
+Constructor look like a method without return type.
+
+Rules for Creating a Constructor
+1) A constructor does not have return type.
+2) The name of the constructor is same as the name of the class.
+3) A constructor cannot be abstract, final, static and Synchronized.
+
+Types of Constructor
+1.Default Constructor
+2.Parametrized Constructor
+
+Default Constructor
+Default constructor is used to assign default values to instance data variables when there is no parametrized as well as values not assigned to instance variables.
+Default constructor works automatically if it could not find a parametrized constructor in a program and there is no values assigned for instance variables.
+A constructor is called “Default Constructor” when it doesn’t have any parameter.
+Purpose : The default constructor is used to provide the default values to the object like 0, null, etc., depending on the type.
+
+Example Program For Default Constructor
+
+//Java Program to create and call a default constructor  
+class Bike1{  
+//creating a default constructor  
+Bike1(){System.out.println(“Bike is created”);}  
+//main method  
+public static void main(String args[]){  
+//calling a default constructor  
+Bike1 b=new Bike1();  
+}  
+}  
+Parametrized Constructor
+Parametrized Constructor is to assign values to instance data variables passed during object creation.
+
+Example Program for Parametrized Constructor
+//Java Program to demonstrate the use of the parameterized constructor 
+class Student{  
+    int id;  
+    String name;  
+    //creating a parameterized constructor  
+    Student(int i,String n){  
+    id = i;  
+    name = n;  
+    }  
+    //method to display the values  
+    void display() { 
+   System.out.println(id+” “+name); } 
+    public static void main(String args[]) {  
+    //creating objects and passing values  
+    Student s1 = new Student(111,”Karan”);  
+    Student s2 = new Student(222,”Aryan”);  
+    //calling method to display the values of object  
+    s1.display();  
+    s2.display();  
+   }  
+}  
+Why no return type for constructor ?
+Constructor is just an intermediate between values and instance data variables, it makes use of local variables to pass on / assign values so there is no need to return anything as output.
+Why Constructor has same name as class name ?
+Constructor call has to identify the instance variable present inside the class with the help of ClassName so constructor should be same as ClassName for easy identification.
+What is the purpose of Constructor ?
+The purpose of constructor is to assign values to the instance variables at the time of object creation.
+Can Constructor can be Overloaded ?
+Yes, Constructor can be overloaded.
+Can Overriding happens in Constructor ?
+No, it ends in compiler error because two class can not have same name.
+Who Writes default Constructor ?
+Javac
+Who runs default Constructor ?
+JVM
+Difference between Constructor and Method

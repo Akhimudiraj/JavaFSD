@@ -1,0 +1,192 @@
+-----hybernet --------- 
+
+-----employeee-------
+
+package demm;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Column;
+
+@Entity
+@Table(name = "Employee")
+public class Employee {
+
+    @Id
+    private int id;
+
+    @Column(name = "name")
+    private String name;
+
+    private int age;
+    private int salary;
+
+    @Column(name = "designation")
+    private String designation;
+
+    // Getters and Setters
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
+
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+
+    public int getAge() { return age; }
+    public void setAge(int age) { this.age = age; }
+
+    public int getSalary() { return salary; }
+    public void setSalary(int salary) { this.salary = salary; }
+
+    public String getDesignation() { return designation; }
+    public void setDesignation(String designation) { this.designation = designation; }
+}
+
+
+
+---------main--------
+
+package demm;
+
+import java.util.Scanner;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+public class Mainapp {
+
+    public static void main(String[] args) {
+
+        try {
+            Configuration cfg = new Configuration();
+            cfg.configure("hibernate.cfg.xml"); 
+
+            SessionFactory factory = cfg.buildSessionFactory();
+
+            Employee e = new Employee();
+//            e.setId(100);
+//            e.setName("dhoni");
+//            e.setAge(22);
+//            e.setSalary(800000);
+//            e.setDesignation("Developer");
+            Scanner sc= new Scanner(System.in);
+            System.out.println("enter id");
+            int id=sc.nextInt();
+            e.setId(id);
+            
+            System.out.println("enter name");
+            String name=sc.next();
+            e.setName(name);
+            
+            System.out.println("enter age");
+            int age=sc.nextInt();
+            e.setAge(age);
+            
+            System.out.println("enter salary");
+            int Salary=sc.nextInt();
+            e.setSalary(Salary);
+            
+            System.out.println("enter desgination");
+            String Designation=sc.next();
+            e.setDesignation(Designation);
+
+            Session session = factory.openSession();
+            Transaction tx = session.beginTransaction();
+
+            session.save(e);  
+            tx.commit();
+
+            session.close();
+            factory.close();
+
+            System.out.println(" Data inserted successfully!");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
+
+-----hibernetxml-----------
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/Virtusa?useSSL=false&amp;serverTimezone=UTC</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">200318</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+
+       <!-- this is for sql update, or create -->
+        <property name="hbm2ddl.auto">update</property>
+        <property name="show_sql">true</property>
+
+      <!-- write package name.class name in mapping -->
+        <mapping class="demm.Employee"/>
+    </session-factory>
+</hibernate-configuration>
+
+-------pom xml----------
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>comsom</groupId>
+    <artifactId>HIbber</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <dependencies>
+        <!-- Hibernate -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>5.4.32.Final</version>
+        </dependency>
+
+        <!-- MySQL Connector -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.33</version>
+        </dependency>
+
+
+
+        <!-- JPA API 
+        <dependency>
+            <groupId>javax.persistence</groupId>
+            <artifactId>javax.persistence-api</artifactId>
+            <version>2.2</version>
+        </dependency>
+        -->
+    </dependencies>
+</project>
+
+
+
+
+---my sql------
+
+
+create database Virtusa;
+use Virtusa;
+create table Employee
+(
+ id int,
+ Name varchar(10),
+ Age int,
+ Salary int,
+ Designation varchar(15)
+ );
+ select * from Employee;

@@ -1,0 +1,35 @@
+SWAGGER
+
+Swagger is a tool that helps you document, test, and visualize your REST APIs — all in one place.
+
+Think of it like a Postman inside your browser, but it’s automatically generated from your Spring Boot code.
+
+When you add Swagger (via the Springdoc OpenAPI library) to your project:
+
+It scans your code (@RestController, @GetMapping, etc.)
+
+Automatically creates API documentation for each endpoint
+
+Provides a web UI where you can try out those APIs (GET, POST, PUT, DELETE)
+
+Shows details like:
+
+Request parameters
+
+Request body
+
+Response type
+
+Status codes (200, 404, 400, etc.)
+
+
+<dependency>
+    <groupId>org.springdoc</groupId>
+    <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+    <version>2.8.5</version>
+</dependency>
+
+
+http://localhost:8888/swagger-ui/index.html
+
+ 
