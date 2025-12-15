@@ -1,3 +1,4 @@
+HarishAngular
 component : html : web page
 			css: style
 			ts : logical
@@ -16,9 +17,13 @@ databinding : passing the data from html to ts a/ ts file html
 				3)property binding 
 (ng modedl automatic data triggers)
 
-directives 
+directives  structural directive : *ngif,*ngfor, ngswitch
+		Attribute directives : ngclass, ngstyle
+
+forms : template diven orms : validation in html
+		reactive driven form : validation in ts
 pipes
-forms
+
 services
 
 
@@ -320,9 +325,27 @@ These change the DOM structure (add, remove, replace elements).
 They always begin with *
 
 Directive	      Use
-*ngIf	           Show/hide elements
-*ngFor	   Loop through items
+*ngIf	           Show/hide elements  
+*ngFor	   Loop through items 
 *ngSwitch	   Conditional switch
+
+ new way @if(true)(angular 18),   @for{},
+No more *
+✔ Cleaner
+✔ Faster compilation
+✔ Easier to teach beginners
+✔ Works with standalone components
+
+To make templates faster (Better Performance)
+
+example :
+
+@if (isLoggedIn) {
+    <div>Welcome!</div>
+} @else {
+    <div>Please Login</div>
+}
+
 (typescipt)
 ===========================================
 Attribute Directives
@@ -332,8 +355,10 @@ These change the appearance or behavior of elements.
 They do NOT add/remove DOM elements.
 
 Directive	Purpose
-ngClass	Add/remove CSS classes
-ngStyle	Apply inline styles
+ngClass	Add/remove CSS classes (targes the class all at a time)
+
+ngStyle	Apply inline styles (ngStyle is an Angular attribute directive that allows you to dynamically apply inline CSS styles to an element based on component data or conditions.)
+
 ngModel	Two-way binding
 Custom attribute directives	Change appearance (like highlight)
 
@@ -346,8 +371,8 @@ ex job="abc" this is in ts
 html {{job}| uppercase} (here we are saying how we want data )
 
 we can also create custom pipe 
-ng genenrate pipe sqr
-
+ng genenrate pipe sqr (custom pipe)
+ng  g  c pipedemo
 ----------------------------------------------------------------------------------------------
 FORMS 
 
@@ -380,12 +405,40 @@ Example:
   <input type="text" name="username" ngModel required>
 </form>
 
+formsmdue and reactiveforms module shoul import for validations' in app-module.ts
+( like this 
+  Templatedrivenform,
+    Reactivedrivenfrom)
+import { Templatedrivenform } from './templatedrivenform/templatedrivenform';
+import { Reactivedrivenfrom } from './reactivedrivenfrom/reactivedrivenfrom';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+ngmodel have to mention if we want validation
+
+----imp-----
+1. ngModel (Directive) → makes the input a form control
+
+✔ Treat this input as a form control
+✔ Track value
+✔ Track validity
+✔ Track touched/untouched state
+✔ Add it to the parent ngForm
+
+
+=========================================
+in template driven form we use ngmodel (to change in html css)
+in reactive driven we use [formgroup] this we write in html form part formcontrol we write in ts part to add validations  (to change in ts)
 ============================================
 b) Reactive (Model-Driven) Forms
 
 Form logic is defined in the component TypeScript code.
 
 Uses FormGroup, FormControl, and Validators.
+
+✔ Form structure
+✔ Validation rules
+✔ Default values
+✔ Controls and groups
 
 Suitable for large, complex forms.
 
@@ -469,4 +522,97 @@ SERVICES
 it is used to send or share the data across multiple components 
 (generally we call it is dependency injection)
 
-ng g c servicedemo
+ng g s servicedemo
+
+Services are used for:
+
+Sharing data
+Handling APIs
+Auth logic
+Business logic
+
+ex:
+==============================
+Acomponent
+
+import { Component } from '@angular/core';
+import { Commonservice } from '../commonservice';
+import { Commonservice2 } from '../commonservice2';
+
+@Component({
+  selector: 'app-a',
+  standalone: false,
+  templateUrl: './a.html',
+  styleUrl: './a.css',
+})
+export class A {
+  constructor(private cs:Commonservice, private cs2:Commonservice2){
+
+  }
+  Acomp(){
+    this.cs.dbcommonlogic();
+    this.cs2.dbcommonservice2();
+    console.log("100 lines from A");
+    
+
+  }
+
+}
+
+<p>a works!</p>
+
+<input type="submit" value="A component" (click)="Acomp()" name="" id="">
+
+same b component also 
+
+this is common service
+
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class Commonservice {
+  dbcommonlogic(){
+    console.log("lines from commonservice ");
+    
+  }
+  
+}
+==============================================
+
+
+we can create multiple services and just add in constructor and use this.
+
+
+--------------------------------------------------------------------------------------------
+Angular Authentication Using Route Guards
+
+In Angular, Route Guards help control access to certain routes (pages).
+They allow you to protect pages so that only authenticated users can open them.
+
+For example:
+
+A logged-in user can access /dashboard
+
+A non-logged-in user should be redirected to /login
+
+To achieve this, Angular provides different guard types like:
+
+CanActivate
+CanActivateChild
+CanLoad
+CanDeactivate
+Resolve
+
+But for authentication, we mostly use CanActivate.
+
+ng guard (name)
+
+steps to implement
+steps :
+Step 1: Create AuthService
+Step 2: Create Route Guard (AuthGuard)
+Step 3: Apply Guard to Your Routes
+Step 4: Login Component Stores Token
+Step 5: Logout Clears Token

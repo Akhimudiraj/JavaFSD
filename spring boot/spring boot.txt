@@ -78,6 +78,187 @@ Authentication – verifying who the user is.
 
 Authorization – deciding what the user is allowed to do.
 
+Protection against attacks like CSRF, CORS misconfig, session fixation, password encoding, etc.
+
+===========
+Authentication
+
+Supports:
+
+In-memory users
+
+JDBC authentication
+
+JPA authentication
+
+LDAP
+
+OAuth2 / JWT
+===================================
+
+✔️ Authorization
+
+Method-level security: @PreAuthorize, @PostAuthorize
+
+URL-based security rules
+
+===========================
+✔️ Security Filters
+
+Uses a chain of filters like:
+
+UsernamePasswordAuthenticationFilter
+
+BasicAuthenticationFilter
+
+BearerTokenAuthenticationFilter
+=========================
+✔️ Attack Protection
+
+CSRF protection
+
+CORS configuration
+
+Password hashing using BCrypt
+
+Session management
+==============================
+1 add dependencies , create security config file use annotations in security file 
+@enablewebsecurity
+@configuration
+
+==================================
+Spring Boot 3+ JWT Security (Complete Guide)
+jwt (json wb token)
+
+1. What is JWT?
+
+JWT (JSON Web Token) is a secure, compact token used to represent user identity.
+It is commonly used for stateless authentication in modern web apps.
+
+A JWT contains 3 parts:
+
+Header – algorithm & token type
+Payload – user info (e.g., username, roles)
+Signature – verifies that the token is not tampered with
+
+1 add dependencies, 
+2 create jwt utility class(handles token creation+ validations ) 
+3 create jwt authentication filter(extracts the tokens and set auntentication)
+4 security configuration file
+
+{User logs in → server returns JWT
+User sends JWT in every request
+Spring Security validates token → user becomes authenticated
+No server session is required (stateless) }
+
+=============================================
+
+JWT Authentication — Simple Explanation (Like a Story)
+
+Imagine you want to enter a secure building (your application).
+
+⭐ Step 1: User knocks on the door
+
+You send username & password to /login.
+
+Meaning:
+You are asking the server → “Please let me in.”
+
+⭐ Step 2: Security guard checks your ID
+
+Spring Security checks:
+
+Is the username correct?
+
+Is the password correct?
+
+Meaning:
+Server verifies your identity.
+
+⭐ Step 3: Guard gives you a badge (JWT Token)
+
+If you're valid, the server gives you a token.
+
+This token has:
+
+Your name
+
+Your role (USER/ADMIN)
+
+Expiry time
+
+A signature so it cannot be copied
+
+Meaning:
+Token = Entry pass.
+
+⭐ Step 4: You keep the badge
+
+You store the token on your side (browser or mobile).
+
+Important:
+The server does NOT keep any record of the token → That’s why it's called stateless.
+
+⭐ Step 5: Every time you enter a new room, you show the badge
+
+When you call any API:
+
+GET /products
+Authorization: Bearer <token>
+
+
+Meaning:
+You show your badge to enter another room.
+
+⭐ Step 6: A scanner checks your badge (JWT Filter)
+
+Before entering the room, a machine (filter) checks:
+
+Is your token still valid?
+
+Is the signature correct?
+
+Has it expired?
+
+Does your role allow entry?
+
+Meaning:
+Spring Security checks the token BEFORE processing your request.
+
+⭐ Step 7: If badge is valid → you get access
+
+After verification:
+
+Spring marks you as authenticated
+
+You can now access the endpoint
+
+Meaning:
+You’re allowed to do what your role permits.
+
+⭐ Step 8: If badge is invalid → Access denied
+
+If token is:
+
+expired
+
+fake
+
+tampered
+
+missing
+
+Then Spring Security returns:
+
+401 Unauthorized
+
+🎯 ONE-LINE SUMMARY
+
+Login → Get token → Send token on every request → Filter checks token → Access granted.
+
+=============================================
+
 It’s widely used for web applications, REST APIs, and microservices.
 
 

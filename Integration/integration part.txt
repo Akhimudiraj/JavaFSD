@@ -1,0 +1,17 @@
+integration part 
+
+https://nawress-rafrafi.medium.com/angular-spring-simple-crud-application-1f62f6ebb1a6
+
+https://www.bezkoder.com/spring-boot-angular-16-mysql/
+
+https://www.javaguides.net/2020/07/spring-boot-angular-10-crud-example-tutorial.html
+
+
+----------------------------------------------------------------------------------
+subscribe having two parrameters res=> , err=> add this in frontend
+
+add @crossorigin(origin and add portvalue localvalue) in backend
+
+
+---------------------------------------------------------------------------------------------------l
+lifecycle hook 
