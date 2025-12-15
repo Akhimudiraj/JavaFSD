@@ -1,0 +1,110 @@
+local storage    vs 		session storage
+
+Feature					localStorage													sessionStorage
+
+Lifetime				Data persists until explicitly cleared		  					Data exists only for the current browser session
+
+Scope		Shared across all tabs/windows of the same origin								Limited to one tab/window
+
+Storage Limit			~5–10 MB (browser-dependent)												~5 MB
+
+Survives Browser Restart?				✅ Yes														❌ No
+
+Accessed By					Same-origin pages											Same-origin pages in same tab
+
+Cleared When			Manually via code or browser settings									When the tab/window is closed
+
+------------------------------------------------------------------------------------------
+
+Race conditions
+
+A race condition occurs when multiple threads access shared data simultaneously, and the final result depends on the timing of thread execution.
+
+🔹 Why it’s dangerous?
+
+Produces unpredictable results
+Hard to debug
+Causes data inconsistency
+
+How to prevent?
+
+synchronized
+Locks
+Atomic variables
+Semaphores
+
+--------------------------------------------------------------------------------------------
+🔹 Semaphore
+✅ What is it?
+
+A semaphore is a thread synchronization mechanism that controls access to a limited number of resources.
+
+🔹 Types
+
+Binary Semaphore → allows 1 thread (like a lock)
+Counting Semaphore → allows N threads
+
+🔹 Example
+Semaphore semaphore = new Semaphore(2); // only 2 threads allowed
+🔹 Real-world analogy
+🅿️ Parking lot with limited slots
+
+----------------------------------------------------------------------------------
+🔹 Deadlock
+✅ What is it?
+
+A deadlock occurs when two or more threads wait indefinitely for resources held by each other.
+
+🔹 Conditions for Deadlock (Coffman Conditions)
+
+Mutual exclusion
+
+Hold and wait
+
+No preemption
+
+Circular wait
+
+How to prevent?
+
+Avoid nested locks
+Use lock ordering
+Use tryLock()
+Timeout mechanisms
+
+------------------------------------------------------------------------------
+
+✅ What is Gradle?
+
+Gradle is a build automation tool used to:
+
+Compile code
+Manage dependencies
+Run tests
+Package applications
+
+🔹 Why Gradle?
+
+Faster than Maven (incremental builds)
+
+Uses Groovy / Kotlin DSL
+
+Highly flexible
+
+Widely used with Spring Boot & Android
+
+--------------------------------------------------------------------------------
+Maven is a build automation and dependency management tool primarily used for Java projects. It follows the principle of “Convention over Configuration.”
+
+🔹 Why Maven is Used
+
+Automates build, test, and packaging
+Manages project dependencies
+Ensures standard project structure
+Makes builds repeatable and consistent
+
+mvn clean → removes old build files
+mvn compile → compiles source code
+mvn test → runs unit tests
+mvn package → creates JAR/WAR
+mvn install → installs artifact to local repo

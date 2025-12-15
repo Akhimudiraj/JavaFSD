@@ -15,3 +15,21 @@ add @crossorigin(origin and add portvalue localvalue) in backend
 
 ---------------------------------------------------------------------------------------------------l
 lifecycle hook 
+
+
+_______________________________________________________________
+local storage    vs 		session storage
+
+Feature					localStorage													sessionStorage
+
+Lifetime				Data persists until explicitly cleared		  					Data exists only for the current browser session
+
+Scope		Shared across all tabs/windows of the same origin								Limited to one tab/window
+
+Storage Limit			~5–10 MB (browser-dependent)												~5 MB
+
+Survives Browser Restart?				✅ Yes														❌ No
+
+Accessed By					Same-origin pages											Same-origin pages in same tab
+
+Cleared When			Manually via code or browser settings									When the tab/window is closed
