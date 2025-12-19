@@ -1,0 +1,15 @@
+project 2 : two companies one bank (mediator )
+one company wants to buy another company
+example : selling house (broker) buying house 
+
+-------------------------------------------------------------------------------
+Project 1 is a system where banks onboard company clients and track their loan requests from submission to approval.
+
+--------------------------------------------------------------------------------
+Project 3 is a secure loan pricing and approval system where RMs submit loan requests, the system calculates interest, and admins finalize approvals and sensitive details.
+
+Company: OmniTech → wants ₹10 Cr
+
+RM enters draft → runs interest calculation → submits
+
+Admin reviews → approves ₹9 Cr at 11% interest → loan status = APPROVED

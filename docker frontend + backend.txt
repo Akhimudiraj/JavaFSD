@@ -1,0 +1,19 @@
+step 1
+
+C:\Users\karnam harika>docker build "C:\Users\karnam harika\Desktop\Docker_Testing\Demo"
+
+docker images
+
+copy image id
+
+docker tag ad57dc881234 myimage:appleballcat
+
+docker run(imagename)
+
+frontend 
+create Dockerfile and add data
+docker build -t food-delivery-frontend .
+
+docker run -d -p 4200:80 --name food-delivery-ui food-delivery-frontend
+
+open browser with port value 
