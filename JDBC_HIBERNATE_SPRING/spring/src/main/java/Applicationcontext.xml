@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 1st method: setter injection (commented out)
+    <bean id="empbean" class="spring.Employee">
+        <property name="id" value="101"/>
+        <property name="name" value="Robert Hook"/>
+        <property name="age" value="23"/>
+        <property name="salary" value="2300000"/>
+        <property name="designation" value="Developer"/>
+    </bean>
+    -->
+
+    <!-- 2nd method: constructor injection -->
+    <bean id="empbean" class="spring.Employee">
+        <constructor-arg name="id" value="1000"/>
+        <constructor-arg name="name" value="Robert Hook"/>
+        <constructor-arg name="age" value="22"/>
+        <constructor-arg name="salary" value="10000"/>
+        <constructor-arg name="designation" value="Developer"/>
+    </bean>
+
+</beans>
